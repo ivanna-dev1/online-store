@@ -8,6 +8,7 @@ function App() {
   const [products, setProducts] = useState(initialList);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [cart, setCart] = useState([]);
 
   const filteredProducts = products.filter((item) => {
     const matchesSearch = item.name
@@ -21,11 +22,17 @@ function App() {
     "All",
     ...new Set(products.map((product) => product.category)),
   ];
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-red-500 underline">
         Shop Project
       </h1>
+      <div className="text-xl font-bold">Cart: {cart.length} items</div>
       <input
         className="m-3 p-2 border border-gray-300 rounded-md w-full md:w-1/2 lg:w-1/3"
         type="text"
@@ -50,7 +57,7 @@ function App() {
       </section>
       <ul className="m-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts.map((item) => (
-          <ProductCard key={item.id} product={item} />
+          <ProductCard key={item.id} product={item} addToCart={addToCart} />
         ))}
       </ul>
     </div>
