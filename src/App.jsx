@@ -57,7 +57,12 @@ function App() {
       </section>
       <ul className="m-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts.map((item) => (
-          <ProductCard key={item.id} product={item} addToCart={addToCart} />
+          <ProductCard
+            key={item.id}
+            product={item}
+            addToCart={addToCart}
+            isInCart={cart.some((cartItem) => cartItem.id === item.id)}
+          />
         ))}
       </ul>
     </div>
