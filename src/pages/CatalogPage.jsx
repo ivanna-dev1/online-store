@@ -1,13 +1,12 @@
 import ProductCard from "../ProductCard";
 import { useState } from "react";
 import products from "../products";
+import { useCart } from "../context/CartContext";
 const initialList = products;
 
 export default function CatalogPage() {
   const [products, setProducts] = useState(initialList);
-  const cart = [];
-  const addToCart = () => {};
-
+  const { cart, addToCart } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
