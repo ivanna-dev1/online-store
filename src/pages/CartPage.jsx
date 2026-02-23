@@ -22,11 +22,12 @@ export default function CartPage() {
             </button>
           </li>
         ))}
-        <p className="text-2xl font-medium text-blue-900 underline">
-          {cart.length === 0
-            ? ""
-            : `Items in cart- ${cart.length}. Total: $${cart.reduce((total, item) => total + item.price, 0)}`}
-        </p>
+        {cart.length > 0 && (
+          <p className="text-2xl font-medium text-blue-900 underline">
+            Items in cart- {cart.length}. Total: ${""}
+            {cart.reduce((total, item) => total + item.price, 0).toFixed(2)}
+          </p>
+        )}
       </ul>
     </div>
   );

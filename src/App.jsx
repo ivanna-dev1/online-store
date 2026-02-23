@@ -7,7 +7,7 @@ import { AllRoutes } from "./components/AllRoutes";
 
 function App() {
   return (
-    <div className="p-4">
+    <div className="p-4 bg-gray-100">
       <Header />
       <AllRoutes />
     </div>
