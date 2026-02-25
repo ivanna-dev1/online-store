@@ -1,16 +1,19 @@
 import React from "react";
 import { useCart } from "./context/CartContext";
+import { Link } from "react-router-dom";
 
 function ProductCard({ product, isInCart }) {
   const { cart, addToCart, incrementQuantity, decrementQuantity } = useCart();
   return (
     <div className="border bg-white border-gray-200 rounded-2xl p-4 flex flex-col justify-between h-100 max-w-50 shadow-md">
-      <img className="h-35" src={product.image} alt={product.name} />
-      <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-semibold">{product.name}</h3>
-        <p className="text-gray-600">${product.price}</p>
-        <p className="text-gray-600">{product.description}</p>
-      </div>
+      <Link to={`/product/${product.id}`}>
+        <img className="h-35" src={product.image} alt={product.name} />
+        <div className="flex flex-col gap-1">
+          <h3 className="text-lg font-semibold">{product.name}</h3>
+          <p className="text-gray-600">${product.price}</p>
+          <p className="text-gray-600">{product.description}</p>
+        </div>
+      </Link>
       <button
         onClick={() => addToCart(product.id)}
         disabled={isInCart}
