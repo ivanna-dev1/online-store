@@ -27,7 +27,7 @@ export default function ProductDetailsPage() {
         />
         <div className="flex flex-col gap-1">
           <h3 className="text-lg font-semibold">{product.name}</h3>
-          <p className="text-gray-600">${product.price}</p>
+          <p className="text-gray-600">{product.price}грн</p>
           <p className="text-gray-600">{product.description}</p>
           <p className="text-gray-600">{product.fullDescription}</p>
         </div>

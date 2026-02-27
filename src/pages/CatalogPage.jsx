@@ -8,21 +8,18 @@ export default function CatalogPage() {
   const [products, setProducts] = useState(initialList);
   const { cart, addToCart } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedGroup, setSelectedGroup] = useState("All");
 
   const filteredProducts = products.filter((item) => {
     const matchesSearch = item.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      selectedCategory === item.category || selectedCategory === "All";
-    return matchesSearch && matchesCategory;
+    const matchesGroup =
+      selectedGroup === item.group || selectedGroup === "All";
+    return matchesSearch && matchesGroup;
   });
 
-  const categories = [
-    "All",
-    ...new Set(products.map((product) => product.category)),
-  ];
+  const groups = ["All", ...new Set(products.map((product) => product.group))];
 
   return (
     <div className="p-4">
@@ -37,17 +34,17 @@ export default function CatalogPage() {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <section>
-        {categories.map((category) => (
+        {groups.map((group) => (
           <button
-            key={category}
+            key={group}
             className={
-              selectedCategory === category
+              selectedGroup === group
                 ? "bg-pink-800 text-white px-4 py-2 rounded-lg"
                 : "bg-gray-500 text-white px-4 py-2 rounded-lg"
             }
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => setSelectedGroup(group)}
           >
-            {category}
+            {group}
           </button>
         ))}
       </section>
