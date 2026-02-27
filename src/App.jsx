@@ -4,12 +4,18 @@ import CartPage from "./pages/CartPage";
 
 import { Header } from "./components/Header";
 import { AllRoutes } from "./components/AllRoutes";
+import { Sidebar } from "./components/Sidebar";
 
 function App() {
   return (
-    <div className="p-4 bg-gray-100">
+    <div className="flex flex-col min-h-screen p-4 bg-gray-100">
       <Header />
-      <AllRoutes />
+      <div className="flex flex-1">
+        <Sidebar title="Продукти" />
+        <main className="flex-1">
+          <AllRoutes />
+        </main>
+      </div>
     </div>
   );
 }
