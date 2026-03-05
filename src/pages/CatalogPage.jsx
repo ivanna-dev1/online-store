@@ -2,6 +2,8 @@ import ProductCard from "../ProductCard";
 import { useState } from "react";
 import products from "../products";
 import { useCart } from "../context/CartContext";
+import { Breadcrumbs } from "../components/Breadcrumbs";
+
 const initialList = products;
 
 export default function CatalogPage() {
@@ -33,6 +35,10 @@ export default function CatalogPage() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <Breadcrumbs
+        subCategory={selectedGroup !== "All" ? selectedGroup : null}
+      />
+
       <section>
         {groups.map((group) => (
           <button

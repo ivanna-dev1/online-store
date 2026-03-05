@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import products from "../products";
 import { useCart } from "../context/CartContext";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -18,6 +19,12 @@ export default function ProductDetailsPage() {
 
   return (
     <div className="flex flex-col items-center h-200 w-[300px]  mx-auto">
+      <Breadcrumbs
+        group={product.group}
+        subCategory={product.subCategory}
+        productName={product.name}
+      />
+
       <h1 className="text-2xl font-bold mb-4 p-5">Product Details</h1>
       <div className="border bg-white border-gray-200 rounded-2xl p-4 flex flex-col justify-between ">
         <img
