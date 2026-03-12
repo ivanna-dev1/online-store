@@ -52,7 +52,7 @@ const products = [
     category: "Овочі",
     price: 105,
     onSale: true,
-    discount: 38,
+    discount: 40,
     description: "Соковитий свіжий помідор",
     fullDescription: `Соковитий свіжий помідор.
 Мʼясистий та ароматний, підходить для 
@@ -176,7 +176,7 @@ const products = [
     category: "Фрукти",
     price: 145,
     onSale: true,
-    discount: 32,
+    discount: 30,
     description: "Солодкий червоний банан",
     fullDescription: `Солодкий червоний банан.
 Має більш кремову текстуру та насичений смак.
@@ -239,7 +239,7 @@ const products = [
     category: "Фрукти",
     price: 75,
     onSale: true,
-    discount: 21,
+    discount: 20,
     description: "Авокадо Хасс для тостів",
     fullDescription: `Авокадо сорту Хасс.
 Має кремову текстуру та ніжний горіховий смак.
@@ -304,7 +304,7 @@ const products = [
     category: "Молочні",
     price: 165,
     onSale: true,
-    discount: 29,
+    discount: 30,
     description: "Грецький натуральний йогурт",
     fullDescription: `Грецький натуральний йогурт.
 Має густу текстуру та ніжний смак.
@@ -366,7 +366,7 @@ const products = [
     category: "Молочні",
     price: 48,
     onSale: true,
-    discount: 38,
+    discount: 40,
     description: "Пастеризоване молоко",
     fullDescription: `Пастеризоване молоко 2,5% жирності.
 Натуральний молочний продукт для щоденного вживання.
@@ -433,7 +433,7 @@ const products = [
     category: "Мʼясо",
     price: 245,
     onSale: true,
-    discount: 16,
+    discount: 15,
     description: "Іспанський хамон 100г",
     fullDescription: `Іспанський хамон Serrano.
 Витримане мʼясо з насиченим смаком.
@@ -495,7 +495,7 @@ const products = [
     category: "Риба",
     price: 215,
     onSale: true,
-    discount: 13,
+    discount: 15,
     description: "Филе лосося 100г",
     fullDescription: `Філе лосося слабосолене.
 Делікатний смак та ніжна текстура.
@@ -560,7 +560,7 @@ const products = [
     category: "Бакалія",
     price: 295,
     onSale: true,
-    discount: 41,
+    discount: 40,
     description: "Олія холодного віджиму",
     fullDescription: `Оливкова олія першого холодного віджиму.
 Має насичений аромат та мʼякий смак.
@@ -627,7 +627,7 @@ const products = [
     category: "Напої",
     price: 54,
     onSale: true,
-    discount: 19,
+    discount: 20,
     description: "Газований напій",
     fullDescription: `Газований напій зі знайомим карамельним смаком.
 Освіжає та підходить для вечірок.`,
@@ -690,7 +690,7 @@ const products = [
     category: "Напої",
     price: 24,
     onSale: true,
-    discount: 28,
+    discount: 30,
     description: "Питна негазована вода",
     fullDescription: `Чиста питна вода без газу.
 Підходить для щоденного вживання.
@@ -756,7 +756,7 @@ const products = [
     category: "Алкоголь",
     price: 920,
     onSale: true,
-    discount: 26,
+    discount: 25,
     description: "Ігристе вино Brut",
     fullDescription: `Ігристе вино Brut.
 Сухий смак з тонкими цитрусовими нотами.
@@ -887,7 +887,7 @@ const products = [
     category: "Булочки",
     price: 22,
     onSale: true,
-    discount: 22,
+    discount: 20,
     description: "Здобна булочка з маком",
     fullDescription: `М'яка здобна булочка, посипана маком.
 Смакує до чаю або кави.`,
