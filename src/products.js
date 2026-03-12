@@ -5,6 +5,8 @@ const products = [
     name: "Червоне яблуко",
     category: "Фрукти",
     price: 32,
+    onSale: false,
+    discount: 0,
     description: "Солодке, хрустке яблуко",
     fullDescription: `Солодке, хрустке яблуко. 
 Стиглий плід із соковитою мʼякоттю та насиченим ароматом. 
@@ -18,6 +20,8 @@ const products = [
     name: "Банан",
     category: "Фрукти",
     price: 72,
+    onSale: false,
+    discount: 0,
     description: "Мʼякий, солодкий банан",
     fullDescription: `Мʼякий, солодкий банан.
 Джерело калію та швидкої енергії. 
@@ -32,6 +36,8 @@ const products = [
     name: "Огірок ґрунтовий",
     category: "Овочі",
     price: 115,
+    onSale: false,
+    discount: 0,
     description: "Свіжий ґрунтовий огірок",
     fullDescription: `Свіжий ґрунтовий огірок.
 Хрусткий та ароматний овоч для салатів 
@@ -45,6 +51,8 @@ const products = [
     name: "Помідор",
     category: "Овочі",
     price: 105,
+    onSale: true,
+    discount: 38,
     description: "Соковитий свіжий помідор",
     fullDescription: `Соковитий свіжий помідор.
 Мʼясистий та ароматний, підходить для 
@@ -58,6 +66,8 @@ const products = [
     name: "Апельсин",
     category: "Цитрусові",
     price: 85,
+    onSale: false,
+    discount: 0,
     description: "Соковитий апельсин",
     fullDescription: `Соковитий апельсин.
 Багатий на вітамін C, має яскравий аромат 
@@ -72,6 +82,8 @@ const products = [
     name: "Лимон",
     category: "Цитрусові",
     price: 68,
+    onSale: false,
+    discount: 0,
     description: "Ароматний кислий лимон",
     fullDescription: `Ароматний кислий лимон.
 Ідеальний для напоїв, чаю та маринадів.
@@ -86,6 +98,8 @@ const products = [
     name: "Огірок довгий",
     category: "Овочі",
     price: 125,
+    onSale: false,
+    discount: 0,
     description: "Довгий гладкий огірок",
     fullDescription: `Довгий гладкий огірок.
 Соковитий та хрусткий, має ніжну шкірку.
@@ -99,6 +113,8 @@ const products = [
     name: "Органічний банан",
     category: "Фрукти",
     price: 95,
+    onSale: true,
+    discount: 15,
     description: "Органічний солодкий банан",
     fullDescription: `Органічний солодкий банан.
 Вирощений без синтетичних добрив.
@@ -113,6 +129,8 @@ const products = [
     name: "Огірок парниковий",
     category: "Овочі",
     price: 135,
+    onSale: false,
+    discount: 0,
     description: "Ніжний тепличний огірок",
     fullDescription: `Ніжний тепличний огірок.
 Має тонку шкірку та соковиту мʼякоть.
@@ -126,6 +144,8 @@ const products = [
     name: "Міні-банан",
     category: "Фрукти",
     price: 110,
+    onSale: false,
+    discount: 0,
     description: "Маленький солодкий банан",
     fullDescription: `Маленький солодкий банан.
 Зручний формат для перекусу.
@@ -140,6 +160,8 @@ const products = [
     name: "Помідори чері",
     category: "Овочі",
     price: 85,
+    onSale: false,
+    discount: 0,
     description: "Солодкі томати чері",
     fullDescription: `Солодкі томати чері.
 Мають насичений смак та аромат.
@@ -153,6 +175,8 @@ const products = [
     name: "Червоний банан",
     category: "Фрукти",
     price: 145,
+    onSale: true,
+    discount: 32,
     description: "Солодкий червоний банан",
     fullDescription: `Солодкий червоний банан.
 Має більш кремову текстуру та насичений смак.
@@ -167,6 +191,8 @@ const products = [
     name: "Полуниця",
     category: "Ягоди",
     price: 250,
+    onSale: false,
+    discount: 0,
     description: "Свіжа соковита полуниця",
     fullDescription: `Свіжа соковита полуниця.
 Ароматна та солодка ягода.
@@ -181,6 +207,8 @@ const products = [
     name: "Чорниця",
     category: "Ягоди",
     price: 180,
+    onSale: false,
+    discount: 0,
     description: "Насичена свіжа чорниця",
     fullDescription: `Насичена свіжа чорниця.
 Має глибокий смак та темний колір.
@@ -195,6 +223,8 @@ const products = [
     name: "Броколі",
     category: "Овочі",
     price: 140,
+    onSale: false,
+    discount: 0,
     description: "Свіжа зелена броколі",
     fullDescription: `Свіжа зелена броколі.
 Має щільну текстуру та ніжний смак.
@@ -208,6 +238,8 @@ const products = [
     name: "Авокадо",
     category: "Фрукти",
     price: 75,
+    onSale: true,
+    discount: 21,
     description: "Авокадо Хасс для тостів",
     fullDescription: `Авокадо сорту Хасс.
 Має кремову текстуру та ніжний горіховий смак.
@@ -221,6 +253,8 @@ const products = [
     name: "Морква",
     category: "Овочі",
     price: 28,
+    onSale: false,
+    discount: 0,
     description: "Свіжа хрустка морква",
     fullDescription: `Свіжа хрустка морква.
 Має природну солодкість.
@@ -235,6 +269,8 @@ const products = [
     name: "Ківі",
     category: "Фрукти",
     price: 95,
+    onSale: false,
+    discount: 0,
     description: "Соковитий стиглий ківі",
     fullDescription: `Соковитий стиглий ківі.
 Має освіжаючий кисло-солодкий смак.
@@ -249,6 +285,8 @@ const products = [
     name: "Картопля молода",
     category: "Овочі",
     price: 45,
+    onSale: false,
+    discount: 0,
     description: "Молода картопля",
     fullDescription: `Сезонна молода картопля.
 Має тонку шкірку та ніжний смак.
@@ -265,6 +303,8 @@ const products = [
     name: "Йогурт Lekker 1кг",
     category: "Молочні",
     price: 165,
+    onSale: true,
+    discount: 29,
     description: "Грецький натуральний йогурт",
     fullDescription: `Грецький натуральний йогурт.
 Має густу текстуру та ніжний смак.
@@ -279,6 +319,8 @@ const products = [
     name: "Actimel лісові ягоди",
     category: "Молочні",
     price: 28,
+    onSale: false,
+    discount: 0,
     description: "Кисломолочний напій",
     fullDescription: `Кисломолочний напій з ароматом лісових ягід.
 Підтримує баланс мікрофлори.`,
@@ -292,6 +334,8 @@ const products = [
     name: "Йогурт Fantasia 100г",
     category: "Молочні",
     price: 42,
+    onSale: false,
+    discount: 0,
     description: "Йогурт з шоколадними кульками",
     fullDescription: `Йогурт з хрусткими шоколадними кульками.
 Поєднання ніжної текстури та солодкого смаку.`,
@@ -305,6 +349,8 @@ const products = [
     name: "Valio PROfeel шоколад",
     category: "Молочні",
     price: 75,
+    onSale: false,
+    discount: 0,
     description: "Протеїновий пудинг",
     fullDescription: `Протеїновий пудинг з шоколадним смаком.
 Містить високий вміст білка.
@@ -319,6 +365,8 @@ const products = [
     name: "Молоко 2,5%",
     category: "Молочні",
     price: 48,
+    onSale: true,
+    discount: 38,
     description: "Пастеризоване молоко",
     fullDescription: `Пастеризоване молоко 2,5% жирності.
 Натуральний молочний продукт для щоденного вживання.
@@ -333,6 +381,8 @@ const products = [
     name: "Сир твердий Гауда",
     category: "Молочні",
     price: 145,
+    onSale: false,
+    discount: 0,
     description: "Твердий сир 45%",
     fullDescription: `Твердий сир 45% жирності.
 Має ніжний вершковий смак.
@@ -347,6 +397,8 @@ const products = [
     name: "Яйця курячі С1",
     category: "Молочні",
     price: 72,
+    onSale: false,
+    discount: 0,
     description: "Курячі яйця 10 шт",
     fullDescription: `Свіжі курячі яйця категорії С1.
 Підходять для сніданків та випічки.
@@ -362,6 +414,8 @@ const products = [
     name: "Кефір 1% 900г",
     category: "Кисломолочні",
     price: 42,
+    onSale: false,
+    discount: 0,
     description: "Класичний кефір",
     fullDescription: `Класичний кефір 1% жирності.
 Має ніжний смак та корисні властивості.
@@ -378,6 +432,8 @@ const products = [
     name: "Hamon Argal Serrano",
     category: "Мʼясо",
     price: 245,
+    onSale: true,
+    discount: 16,
     description: "Іспанський хамон 100г",
     fullDescription: `Іспанський хамон Serrano.
 Витримане мʼясо з насиченим смаком.
@@ -392,6 +448,8 @@ const products = [
     name: "Imperia Appetita асорті",
     category: "Мʼясо",
     price: 285,
+    onSale: false,
+    discount: 0,
     description: "Мʼясо та сир 215г",
     fullDescription: `Асорті з мʼяса та сиру.
 Підходить для святкової подачі.`,
@@ -405,6 +463,8 @@ const products = [
     name: "Sierra Morena Іберіко",
     category: "Мʼясо",
     price: 345,
+    onSale: false,
+    discount: 0,
     description: "Хамон Іберіко 100г",
     fullDescription: `Хамон Іберіко преміум класу.
 Має глибокий аромат та ніжну текстуру.`,
@@ -418,6 +478,8 @@ const products = [
     name: "Куряче філе",
     category: "Мʼясо",
     price: 195,
+    onSale: false,
+    discount: 0,
     description: "Охолоджене філе курки",
     fullDescription: `Охолоджене куряче філе.
 Ніжне дієтичне мʼясо з високим вмістом білка.
@@ -432,6 +494,8 @@ const products = [
     name: "Лосось слабосолений",
     category: "Риба",
     price: 215,
+    onSale: true,
+    discount: 13,
     description: "Филе лосося 100г",
     fullDescription: `Філе лосося слабосолене.
 Делікатний смак та ніжна текстура.
@@ -448,6 +512,8 @@ const products = [
     name: "Фісташки Wonderful 250г",
     category: "Горіхи",
     price: 325,
+    onSale: false,
+    discount: 0,
     description: "Смажені солоні фісташки",
     fullDescription: `Смажені солоні фісташки.
 Мають насичений смак та хрустку текстуру.
@@ -462,6 +528,8 @@ const products = [
     name: "Мигдаль Премія чилі",
     category: "Горіхи",
     price: 85,
+    onSale: false,
+    discount: 0,
     description: "Мигдаль з копченим чилі",
     fullDescription: `Мигдаль з пікантним смаком чилі.
 Хрусткий та ароматний перекус.`,
@@ -475,6 +543,8 @@ const products = [
     name: "Паста Penne",
     category: "Бакалія",
     price: 58,
+    onSale: false,
+    discount: 0,
     description: "Макарони з твердих сортів",
     fullDescription: `Паста з твердих сортів пшениці.
 Зберігає форму після варіння.
@@ -489,6 +559,8 @@ const products = [
     name: "Оливкова олія Extra Virgin",
     category: "Бакалія",
     price: 295,
+    onSale: true,
+    discount: 41,
     description: "Олія холодного віджиму",
     fullDescription: `Оливкова олія першого холодного віджиму.
 Має насичений аромат та мʼякий смак.
@@ -503,6 +575,8 @@ const products = [
     name: "Мед акацієвий",
     category: "Бакалія",
     price: 225,
+    onSale: false,
+    discount: 0,
     description: "Натуральний мед",
     fullDescription: `Натуральний акацієвий мед.
 Світлий, з мʼяким квітковим ароматом.
@@ -518,6 +592,8 @@ const products = [
     name: "Майонез Провансаль 200г",
     category: "Соуси",
     price: 52,
+    onSale: false,
+    discount: 0,
     description: "Класичний майонез",
     fullDescription: `Майонез Провансаль 67% жирності.
 Має ніжний смак та густу консистенцію.
@@ -534,6 +610,8 @@ const products = [
     name: "Cappy Exotic 1л",
     category: "Напої",
     price: 78,
+    onSale: false,
+    discount: 0,
     description: "Фруктовий нектар",
     fullDescription: `Фруктовий нектар з екзотичних фруктів.
 Має яскравий аромат та солодкий смак.
@@ -548,6 +626,8 @@ const products = [
     name: "Pepsi Cola 1,75л",
     category: "Напої",
     price: 54,
+    onSale: true,
+    discount: 19,
     description: "Газований напій",
     fullDescription: `Газований напій зі знайомим карамельним смаком.
 Освіжає та підходить для вечірок.`,
@@ -561,6 +641,8 @@ const products = [
     name: "Schweppes Pink Tonic",
     category: "Напої",
     price: 52,
+    onSale: false,
+    discount: 0,
     description: "Сильногазований тонік",
     fullDescription: `Сильногазований тонік з ягідними нотами.
 Освіжаючий та злегка гіркуватий смак.
@@ -575,6 +657,8 @@ const products = [
     name: "Mad Heads Easy Drip",
     category: "Кава",
     price: 215,
+    onSale: false,
+    discount: 0,
     description: "Кава в дріпах 100г",
     fullDescription: `Кава в дріп-пакетах.
 Зручний формат для заварювання.
@@ -589,6 +673,8 @@ const products = [
     name: "L'OR Espresso Caramel",
     category: "Кава",
     price: 185,
+    onSale: false,
+    discount: 0,
     description: "Капсули з карамеллю",
     fullDescription: `Капсули з ароматом карамелі.
 Мʼякий смак з солодкими нотами.
@@ -603,6 +689,8 @@ const products = [
     name: "Вода негазована 1,5л",
     category: "Напої",
     price: 24,
+    onSale: true,
+    discount: 28,
     description: "Питна негазована вода",
     fullDescription: `Чиста питна вода без газу.
 Підходить для щоденного вживання.
@@ -617,6 +705,8 @@ const products = [
     name: "Зелений чай байховий",
     category: "Напої",
     price: 115,
+    onSale: false,
+    discount: 0,
     description: "Листовий зелений чай",
     fullDescription: `Натуральний листовий зелений чай.
 Має легкий травʼянистий аромат.
@@ -633,6 +723,8 @@ const products = [
     name: "Віскі Hankey Bannister",
     category: "Алкоголь",
     price: 780,
+    onSale: false,
+    discount: 0,
     description: "Шотландський купажований віскі",
     fullDescription: `Шотландський купажований віскі.
 Має мʼякий смак з нотами карамелі та дуба.
@@ -647,6 +739,8 @@ const products = [
     name: "Bottega Prosecco Extra Dry",
     category: "Алкоголь",
     price: 645,
+    onSale: false,
+    discount: 0,
     description: "Ігристе вино Extra Dry",
     fullDescription: `Ігристе вино Extra Dry.
 Має легкий фруктовий аромат.
@@ -661,6 +755,8 @@ const products = [
     name: "Bottega Gold Prosecco Brut",
     category: "Алкоголь",
     price: 920,
+    onSale: true,
+    discount: 26,
     description: "Ігристе вино Brut",
     fullDescription: `Ігристе вино Brut.
 Сухий смак з тонкими цитрусовими нотами.
@@ -676,6 +772,8 @@ const products = [
     name: "Пиво світле 0,5л",
     category: "Пиво",
     price: 48,
+    onSale: false,
+    discount: 0,
     description: "Світле фільтроване пиво",
     fullDescription: `Світле пиво з м'яким смаком та легкою гірчинкою.
 Добре освіжає в спекотний день.`,
@@ -691,6 +789,8 @@ const products = [
     name: "Кекс Голландський",
     category: "Десерти",
     price: 115,
+    onSale: false,
+    discount: 0,
     description: "Класичний кекс 300г",
     fullDescription: `Класичний кекс з ніжною текстурою.
 Має солодкий аромат та мʼяку структуру.`,
@@ -704,6 +804,8 @@ const products = [
     name: "Сирник Львівський",
     category: "Десерти",
     price: 75,
+    onSale: false,
+    discount: 0,
     description: "Традиційний сирник",
     fullDescription: `Традиційний львівський сирник.
 Має ніжну сирну текстуру та шоколадну глазур.`,
@@ -717,6 +819,8 @@ const products = [
     name: "Чорний шоколад 70%",
     category: "Солодощі",
     price: 68,
+    onSale: true,
+    discount: 15,
     description: "Темний шоколад",
     fullDescription: `Темний шоколад з вмістом какао 70%.
 Насичений смак з легкою гірчинкою.
@@ -732,6 +836,8 @@ const products = [
     name: "Цукерки шоколадні 200г",
     category: "Солодощі",
     price: 125,
+    onSale: false,
+    discount: 0,
     description: "Асорті шоколадних цукерок",
     fullDescription: `Набір шоколадних цукерок з різними начинками.
 Ідеальний подарунок або ласощі до чаю.`,
@@ -747,6 +853,8 @@ const products = [
     name: "Хліб цільнозерновий",
     category: "Випічка",
     price: 42,
+    onSale: false,
+    discount: 0,
     description: "Цільнозерновий хліб",
     fullDescription: `Ароматний цільнозерновий хліб.
 Містить харчові волокна.
@@ -762,6 +870,8 @@ const products = [
     name: "Хліб білий нарізний",
     category: "Хліб",
     price: 32,
+    onSale: false,
+    discount: 0,
     description: "Пшеничний хліб",
     fullDescription: `Класичний білий хліб із пшеничного борошна.
 М'який та повітряний, підходить для сніданків.`,
@@ -776,6 +886,8 @@ const products = [
     name: "Булочка з маком",
     category: "Булочки",
     price: 22,
+    onSale: true,
+    discount: 22,
     description: "Здобна булочка з маком",
     fullDescription: `М'яка здобна булочка, посипана маком.
 Смакує до чаю або кави.`,
