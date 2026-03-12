@@ -26,7 +26,7 @@ export default function CatalogPage() {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-pink-900 underline">
-        Shop Project
+        FreshStore!
       </h1>
       <input
         className="m-3 p-2 border border-gray-300 rounded-md w-full md:w-1/2 lg:w-1/3"

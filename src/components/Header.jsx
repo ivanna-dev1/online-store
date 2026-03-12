@@ -9,7 +9,7 @@ export const Header = ({ onOpenCatalog }) => {
       <div>
         <button
           onClick={onOpenCatalog}
-          className="hover:bg-pink-200 hover:border-pink-600 border bg-pink-300 border-pink-500 p-2 rounded-lg px-4 mr-4"
+          className=" bg-pink-300 hover:bg-pink-200 border-pink-500  hover:border-pink-600 border p-2 rounded-lg px-4 mr-4"
         >
           ☰
         </button>
