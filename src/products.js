@@ -7,6 +7,7 @@ const products = [
     price: 32,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Солодке, хрустке яблуко",
     fullDescription: `Солодке, хрустке яблуко. 
 Стиглий плід із соковитою мʼякоттю та насиченим ароматом. 
@@ -22,6 +23,7 @@ const products = [
     price: 72,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Мʼякий, солодкий банан",
     fullDescription: `Мʼякий, солодкий банан.
 Джерело калію та швидкої енергії. 
@@ -53,6 +55,7 @@ const products = [
     price: 105,
     onSale: true,
     discount: 40,
+    isNew: true,
     description: "Соковитий свіжий помідор",
     fullDescription: `Соковитий свіжий помідор.
 Мʼясистий та ароматний, підходить для 
@@ -287,6 +290,7 @@ const products = [
     price: 45,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Молода картопля",
     fullDescription: `Сезонна молода картопля.
 Має тонку шкірку та ніжний смак.
@@ -321,6 +325,7 @@ const products = [
     price: 28,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Кисломолочний напій",
     fullDescription: `Кисломолочний напій з ароматом лісових ягід.
 Підтримує баланс мікрофлори.`,
@@ -365,8 +370,8 @@ const products = [
     name: "Молоко 2,5%",
     category: "Молочні",
     price: 48,
-    onSale: true,
-    discount: 40,
+    onSale: false,
+    discount: 0,
     description: "Пастеризоване молоко",
     fullDescription: `Пастеризоване молоко 2,5% жирності.
 Натуральний молочний продукт для щоденного вживання.
@@ -383,6 +388,7 @@ const products = [
     price: 145,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Твердий сир 45%",
     fullDescription: `Твердий сир 45% жирності.
 Має ніжний вершковий смак.
@@ -494,8 +500,8 @@ const products = [
     name: "Лосось слабосолений",
     category: "Риба",
     price: 215,
-    onSale: true,
-    discount: 15,
+    onSale: false,
+    discount: 0,
     description: "Филе лосося 100г",
     fullDescription: `Філе лосося слабосолене.
 Делікатний смак та ніжна текстура.
@@ -514,6 +520,7 @@ const products = [
     price: 325,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Смажені солоні фісташки",
     fullDescription: `Смажені солоні фісташки.
 Мають насичений смак та хрустку текстуру.
@@ -559,12 +566,12 @@ const products = [
     name: "Оливкова олія Extra Virgin",
     category: "Бакалія",
     price: 295,
-    onSale: true,
-    discount: 40,
+    onSale: false,
+    discount: 0,
     description: "Олія холодного віджиму",
     fullDescription: `Оливкова олія першого холодного віджиму.
 Має насичений аромат та мʼякий смак.
-Підходить для салатів та маринадів.`,
+Підходит для салатів та маринадів.`,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     group: "Бакалія",
@@ -577,6 +584,7 @@ const products = [
     price: 225,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Натуральний мед",
     fullDescription: `Натуральний акацієвий мед.
 Світлий, з мʼяким квітковим ароматом.
@@ -689,8 +697,8 @@ const products = [
     name: "Вода негазована 1,5л",
     category: "Напої",
     price: 24,
-    onSale: true,
-    discount: 30,
+    onSale: false,
+    discount: 0,
     description: "Питна негазована вода",
     fullDescription: `Чиста питна вода без газу.
 Підходить для щоденного вживання.
@@ -757,6 +765,7 @@ const products = [
     price: 920,
     onSale: true,
     discount: 25,
+    isNew: true,
     description: "Ігристе вино Brut",
     fullDescription: `Ігристе вино Brut.
 Сухий смак з тонкими цитрусовими нотами.
@@ -819,8 +828,8 @@ const products = [
     name: "Чорний шоколад 70%",
     category: "Солодощі",
     price: 68,
-    onSale: true,
-    discount: 15,
+    onSale: false,
+    discount: 0,
     description: "Темний шоколад",
     fullDescription: `Темний шоколад з вмістом какао 70%.
 Насичений смак з легкою гірчинкою.
@@ -855,6 +864,7 @@ const products = [
     price: 42,
     onSale: false,
     discount: 0,
+    isNew: true,
     description: "Цільнозерновий хліб",
     fullDescription: `Ароматний цільнозерновий хліб.
 Містить харчові волокна.
@@ -886,8 +896,8 @@ const products = [
     name: "Булочка з маком",
     category: "Булочки",
     price: 22,
-    onSale: true,
-    discount: 20,
+    onSale: false,
+    discount: 0,
     description: "Здобна булочка з маком",
     fullDescription: `М'яка здобна булочка, посипана маком.
 Смакує до чаю або кави.`,
