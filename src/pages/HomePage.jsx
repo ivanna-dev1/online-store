@@ -1,8 +1,6 @@
 import CatalogPage from "./CatalogPage";
 import { PromoSlider } from "../components/PromoSlider";
 
-
-
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-10">
@@ -12,16 +10,16 @@ export default function HomePage() {
           Вітаємо у FreshStore! 🍎🥦
         </h1>
         <p className="text-gray-600 text-lg mt-8 mb-4 max-w-2xl text-center leading-relaxed font-medium">
-          Ми пропонуємо тільки найсвіжіші овочі, фрукти та  фермерські продукти з
+          Ми пропонуємо тільки найсвіжіші овочі, фрукти та фермерські продукти з
           доставкою до ваших дверей. Гортайте нижче, щоб побачити наші акції!
         </p>
 
         {/* Місце для майбутнього слайдера (Крок 25) */}
         <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all ">
           <PromoSlider />
-          <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
+          {/* <span className="text-pink-300 font-bold italic text-l transition-transform">
             🎠 Слайдер з акціями з'явиться тут...
-          </h3>
+          </span> */}
         </div>
         <p className="text-gray-600 text-lg mt-8 mb-4 max-w-2xl text-center leading-relaxed font-medium">
           У цьому розділі ми показуємо наші найновіші товари. Тут ви знайдете
