@@ -9,6 +9,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image: "https://delikates.ua/images/product/yabluko-chervone.jpg",
     description: "Свіже соковите яблуко",
     fullDescription: `Стигле червоне яблуко з хрусткою соковитою м’якоттю та природною солодкістю.
@@ -24,6 +25,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://static2.tavriav.ua/media/images/8/cd/d0/53/8cdd0533ed2b_10528_main.webp",
     description: "Стиглий солодкий банан",
@@ -40,6 +42,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image: "https://soncesad.com/assets/images/products/1945/.jpeg",
     description: "Свіжий ґрунтовий огірок",
     fullDescription: `Хрусткий ґрунтовий огірок із соковитою м’якоттю та свіжим овочевим ароматом.
@@ -55,6 +58,7 @@ const products = [
     onSale: true,
     discount: 40,
     isNew: true,
+    inStock: true,
     image: "https://agrolife.ua/media/blog/post/pomidor_1_1__1.jpeg",
     description: "Соковитий стиглий помідор",
     fullDescription: `Стиглий помідор із м’ясистою соковитою м’якоттю та насиченим ароматом.
@@ -70,6 +74,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://fruit-time.ua/images/cache/products/b4/apelsin-ispaniya-imp-500x500.jpeg",
     description: "Соковитий апельсин",
@@ -86,6 +91,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg3mho6cMKE0n1zgPFjwVA_sC_pwckcHvIeQ&s",
     description: "Ароматний свіжий лимон",
@@ -102,6 +108,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image: "https://soncesad.com/assets/images/products/1945/.jpeg",
     description: "Довгий салатний огірок",
     fullDescription: `Довгий салатний огірок із ніжною шкіркою та соковитою м’якоттю.
@@ -117,6 +124,7 @@ const products = [
     onSale: true,
     discount: 15,
     isNew: false,
+    inStock: true,
     image:
       "https://static2.tavriav.ua/media/images/8/cd/d0/53/8cdd0533ed2b_10528_main.webp",
     description: "Органічний стиглий банан",
@@ -133,6 +141,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image: "https://soncesad.com/assets/images/products/1945/.jpeg",
     description: "Ніжний тепличний огірок",
     fullDescription: `Тепличний огірок із тонкою шкіркою та соковитою м’якоттю.
@@ -148,6 +157,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://static2.tavriav.ua/media/images/8/cd/d0/53/8cdd0533ed2b_10528_main.webp",
     description: "Солодкий міні банан",
@@ -164,6 +174,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image: "https://agrolife.ua/media/blog/post/pomidor_1_1__1.jpeg",
     description: "Солодкі томати чері",
     fullDescription: `Стиглі томати чері з яскравим ароматом та соковитою м’якоттю.
@@ -179,6 +190,7 @@ const products = [
     onSale: true,
     discount: 30,
     isNew: false,
+    inStock: true,
     image:
       "https://static2.tavriav.ua/media/images/8/cd/d0/53/8cdd0533ed2b_10528_main.webp",
     description: "Стиглий червоний банан",
@@ -195,6 +207,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: false,
     image:
       "https://happypen-photos.s3.eu-north-1.amazonaws.com/44167/klubnika-1kg-ukraina0",
     description: "Свіжа солодка полуниця",
@@ -211,6 +224,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://berry.in.ua/wp-content/uploads/2024/06/FlavourArt-Bilberry.jpg",
     description: "Свіжа лісова чорниця",
@@ -227,6 +241,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image: "https://biolika.ua/c/531-category_default/brokkoli.jpg",
     description: "Свіжа зелена броколі",
     fullDescription: `Броколі зі щільними суцвіттями та ніжним овочевим смаком.
@@ -242,6 +257,7 @@ const products = [
     onSale: true,
     discount: 20,
     isNew: false,
+    inStock: true,
     image: "https://crazybox.com.ua/image/catalog/exotika_new/awokado_hass.JPG",
     description: "Стиглий авокадо Хасс",
     fullDescription: `Авокадо сорту Хасс із кремовою текстурою та ніжним горіховим смаком.
@@ -257,6 +273,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://src.zakaz.atbmarket.com/cache/photos/44/catalog_product_gal_mob_44.png",
     description: "Свіжа хрустка морква",
@@ -273,6 +290,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://goodfruits.com.ua/wp-content/uploads/2024/02/kyvy-ob%D1%8Bchnoe-scaled-1.jpg",
     description: "Стиглий соковитий ківі",
@@ -289,6 +307,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Молода картопля",
@@ -307,6 +326,7 @@ const products = [
     onSale: true,
     discount: 30,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/8b8fe85a-e0a1-4b0e-98ff-09acaefe5e9d.png",
     description: "Натуральний грецький йогурт",
@@ -323,6 +343,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/80b18c4c-5780-426e-9cd4-c5e360c0a968.png",
     description: "Кисломолочний напій з ягодами",
@@ -339,6 +360,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/3cf71fa8-e0e1-469d-8188-846823ffbc1d.png",
     description: "Йогурт з шоколадними кульками",
@@ -355,6 +377,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/f11fe26c-7b9b-4348-90fb-828571c59f1b.png",
     description: "Протеїновий шоколадний пудинг",
@@ -371,6 +394,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Пастеризоване молоко 2,5%",
@@ -387,6 +411,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Твердий сир Гауда",
@@ -403,6 +428,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: false,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Курячі яйця С1",
@@ -419,6 +445,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Класичний кефір 1%",
@@ -437,6 +464,7 @@ const products = [
     onSale: true,
     discount: 15,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/e784f994-03df-4175-ba63-6dc779324619.png",
     description: "Іспанський хамон Serrano",
@@ -453,6 +481,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/9b2235be-87a4-42_b8-b499-60dbdf1f7c2a.png",
     description: "М'ясо-сирне асорті",
@@ -469,6 +498,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/a531b9c7-8b41-4901-8ba8-c91205097419.png",
     description: "Хамон Іберіко",
@@ -485,6 +515,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Охолоджене куряче філе",
@@ -501,6 +532,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Слабосолений лосось",
@@ -519,6 +551,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/1d2cf223-eb7e-4a67-8cab-2e1180ea023e.png",
     description: "Смажені солоні фісташки",
@@ -535,12 +568,11 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/31ecda7f-85f4-426e-b267-fc093b22100a.png",
     description: "Мигдаль з чилі",
-    fullDescription: `Хрусткий мигдаль із пікантним смаком копченого чилі.
-
-Підходить для перекусу або як закуска до напоїв.`,
+    fullDescription: `Хрусткий мигдаль із пікантним смаком копченого чилі. Підходить для перекусу або як закуска до напоїв.`,
   },
   {
     id: 35,
@@ -551,6 +583,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Паста Penne",
@@ -567,6 +600,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Оливкова олія Extra Virgin",
@@ -583,6 +617,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Натуральний акацієвий мед",
@@ -599,6 +634,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Майонез Провансаль",
@@ -606,8 +642,6 @@ const products = [
 
 Підходить для салатів, закусок і соусів.`,
   },
-
-  // ===== НАПОЇ =====
   {
     id: 39,
     name: "Cappy Exotic 1л",
@@ -617,6 +651,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: false,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/62005632-fd3b-4d6c-8110-34199fbd8a5a.png",
     description: "Фруктовий нектар",
@@ -633,6 +668,7 @@ const products = [
     onSale: true,
     discount: 20,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/461594b7-13ae-46ee-8c02-fa2d31bbaa37.png",
     description: "Газований напій Cola",
@@ -649,6 +685,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/9bc3b6bd-8fb2-4162-981e-37b5c96c4101.png",
     description: "Ягідний тонік",
@@ -665,6 +702,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/76a41ff9-3041-4da7-ba46-54fb111c1e55.png",
     description: "Кава в дріп-пакетах",
@@ -681,6 +719,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/3201936a-9fa7-4d43-89e4-816cd02fcf7a.png",
     description: "Карамельні кавові капсули",
@@ -697,6 +736,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Питна негазована вода",
@@ -713,6 +753,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Листовий зелений чай",
@@ -720,8 +761,6 @@ const products = [
 
 Підходить для щоденного чаювання.`,
   },
-
-  // ===== АЛКОГОЛЬ =====
   {
     id: 46,
     name: "Віскі Hankey Bannister",
@@ -731,6 +770,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1000x1000/webp/eb6420ad-a5e3-4ce5-8b90-1886b0bfc120.png",
     description: "Шотландський віскі",
@@ -747,6 +787,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/ab017af7-780e-4f90-9dcb-d25fe2c8861f.png",
     description: "Ігристе вино Extra Dry",
@@ -763,10 +804,11 @@ const products = [
     onSale: true,
     discount: 25,
     isNew: true,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/5c908603-c030-426f-8716-764ea16e558d.png",
     description: "Ігристе вино Brut",
-    fullDescription: `Сухе ігристе вино з легким и цитрусовими нотами.
+    fullDescription: `Сухе ігристе вино з легкими цитрусовими нотами.
 
 Добре поєднується із закусками.`,
   },
@@ -779,6 +821,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Світле фільтроване пиво",
@@ -795,6 +838,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/37d90946-409b-4de6-b56f-8de27a18dacd.png",
     description: "Класичний кекс",
@@ -811,6 +855,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://images.silpo.ua/v2/products/1600x1600/webp/1ee5cefb-4326-4272-ae3a-39228421e61a.png",
     description: "Львівський сирник",
@@ -825,6 +870,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: false,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Темний шоколад 70%",
@@ -839,6 +885,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Асорті шоколадних цукерок",
@@ -855,6 +902,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: true,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Цільнозерновий хліб",
@@ -869,6 +917,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Білий пшеничний хліб",
@@ -883,6 +932,7 @@ const products = [
     onSale: false,
     discount: 0,
     isNew: false,
+    inStock: true,
     image:
       "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
     description: "Булочка з маком",
