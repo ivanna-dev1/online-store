@@ -13,8 +13,6 @@ export default function HomePage() {
           Ми пропонуємо тільки найсвіжіші овочі, фрукти та фермерські продукти з
           доставкою до ваших дверей. Гортайте нижче, щоб побачити наші акції!
         </p>
-
-        {/* Місце для майбутнього слайдера (Крок 25) */}
         <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all ">
           <PromoSlider />
           {/* <span className="text-pink-300 font-bold italic text-l transition-transform">
@@ -27,8 +25,6 @@ export default function HomePage() {
           нові фермерські продукти та цікаві гастрономічні новинки. Гортайте
           слайдер, щоб першими побачити, що нового з’явилося у нашому магазині.
         </p>
-
-        {/* Місце для майбутнього слайдера (Крок 25) */}
         <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all ">
           <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
             🆕 Тут зʼявиться слайдер з новинками
@@ -41,15 +37,12 @@ export default function HomePage() {
           а також дізнаєтесь, як легко приготувати щось нове з наших свіжих
           інгредієнтів.
         </p>
-
-        {/* Місце для майбутнього слайдера (Крок 25) */}
         <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all">
           <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
             🍳 Тут зʼявиться слайдер з рецептами
           </h3>
         </div>
       </div>
-
       {/* СЕКЦІЯ 2: Весь наш каталог (пошук, групи, товари) */}
       <div className="flex flex-col items-center p-10  bg-white rounded-3xl shadow-sm m-4 border border-pink-100">
         <h1 className="text-4xl font-bold text-center text-pink-900 mb-8">
