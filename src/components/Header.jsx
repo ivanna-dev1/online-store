@@ -14,18 +14,31 @@ export const Header = ({ onOpenCatalog }) => {
           ☰
         </button>
         <Link
-          to="/catalog"
+          to="/"
           className="hover:bg-pink-200 hover:border-pink-600 border bg-pink-300 border-pink-500 p-2 rounded-lg px-4 mr-4"
         >
-          Store
+          Головна
         </Link>
       </div>
-      <Link
-        to="/cart"
-        className="hover:bg-blue-200 hover:border-blue-500 border bg-blue-300 border-blue-500 p-2 rounded-lg px-4 mr-4"
-      >
-        Cart: {cart?.length}
-      </Link>
+      <div className="flex gap-4">
+        <Link
+          to="/cabinet"
+          className="hover:bg-pink-200 hover:border-pink-600 border bg-pink-300 border-pink-500 p-2 rounded-lg px-4 mr-4"
+        >
+          Кабінет
+        </Link>
+        <Link
+          to="/cart"
+          className="relative hover:bg-blue-200 hover:border-blue-500 border bg-blue-300 border-blue-500 p-2 rounded-lg px-4 mr-4 flex items-center justify-center"
+        >
+          <span className="text-2xl">🛒</span>
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center border-2 border-white shadow-sm">
+              {cart.reduce((total, item) => total + item.quantity, 0)}
+            </span>
+          )}
+        </Link>
+      </div>
     </header>
   );
 };

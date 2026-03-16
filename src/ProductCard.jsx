@@ -7,10 +7,22 @@ function ProductCard({ product, isInCart }) {
   return (
     <div className="border bg-white border-gray-200 rounded-2xl p-4 flex flex-col justify-between h-100 max-w-50 shadow-md">
       <Link to={`/product/${product.id}`}>
+        {product.onSale && (
+          <span className="absolute top-2 right-2  text-pink-600 px-2 py-1 rounded-lg z-10">
+            Sale
+          </span>
+        )}
+        {product.isNew && (
+          <span className="absolute top-2 right-2  text-pink-600 px-2 py-1 rounded-lg z-10">
+            New
+          </span>
+        )}
         <img className="h-35" src={product.image} alt={product.name} />
         <div className="flex flex-col gap-1">
           <h3 className="text-lg font-semibold">{product.name}</h3>
-          <p className="text-gray-600">{product.price}грн + {product.discount}%</p>
+          <p className="text-gray-600">
+            {product.price}грн + {product.discount}%
+          </p>
           <p className="text-gray-600">{product.description}</p>
         </div>
       </Link>

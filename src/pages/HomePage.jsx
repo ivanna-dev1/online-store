@@ -1,9 +1,13 @@
 import CatalogPage from "./CatalogPage";
 import { PromoSlider } from "../components/PromoSlider";
+import products from "../products";
 
 export default function HomePage() {
+  const saleProducts = products.filter((product) => product.onSale === true);
+  const newProducts = products.filter((product) => product.isNew === true);
+
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-2">
       {/* СЕКЦІЯ 1: Привітання та Слайдери */}
       <div className="flex flex-col items-center p-10 bg-white rounded-3xl shadow-sm m-4 border border-pink-100">
         <h1 className="text-4xl font-extrabold text-pink-900 mb-6 text-center">
@@ -13,31 +17,31 @@ export default function HomePage() {
           Ми пропонуємо тільки найсвіжіші овочі, фрукти та фермерські продукти з
           доставкою до ваших дверей. Гортайте нижче, щоб побачити наші акції!
         </p>
-        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all ">
-          <PromoSlider />
+        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-1 border-pink-200 shadow-inner group transition-all ">
+          <PromoSlider title="Гарячі пропозиції" productList={saleProducts} />
           {/* <span className="text-pink-300 font-bold italic text-l transition-transform">
             🎠 Слайдер з акціями з'явиться тут...
           </span> */}
         </div>
         <p className="text-gray-600 text-lg mt-8 mb-4 max-w-2xl text-center leading-relaxed font-medium">
-          У цьому розділі ми показуємо наші найновіші товари. Тут ви знайдете
-          продукти, які щойно з’явилися в асортименті: свіжі сезонні фрукти,
-          нові фермерські продукти та цікаві гастрономічні новинки. Гортайте
-          слайдер, щоб першими побачити, що нового з’явилося у нашому магазині.
+          Тут ви знайдете продукти, які щойно з’явилися в асортименті: свіжі
+          сезонні фрукти, нові фермерські продукти та цікаві гастрономічні
+          новинки. Гортайте слайдер, щоб першими побачити, що нового з’явилося у
+          нашому магазині.
         </p>
-        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all ">
-          <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
+        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-1 border-pink-200 shadow-inner group transition-all ">
+          <PromoSlider title="NEW!" productList={newProducts} />
+          {/* <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
             🆕 Тут зʼявиться слайдер з новинками
-          </h3>
+          </h3> */}
         </div>
         <p className="text-gray-600 text-lg mt-8 mb-4 max-w-2xl text-center leading-relaxed font-medium">
           Шукаєте ідеї для приготування смачних страв? У цьому слайдері ми
           будемо ділитися простими та корисними рецептами з продуктів, які є в
           нашому магазині. Ви знайдете натхнення для сніданків, обідів та вечер,
-          а також дізнаєтесь, як легко приготувати щось нове з наших свіжих
-          інгредієнтів.
+          а також дізнаєтесь, як легко приготувати щось нове.
         </p>
-        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-4 border-dashed border-pink-200 shadow-inner group transition-all">
+        <div className="w-full max-w-4xl h-72  rounded-2xl flex items-center justify-center border-1 border-pink-200 shadow-inner group transition-all">
           <h3 className="text-pink-600 font-bold italic text-2xl group-hover:scale-110 transition-transform">
             🍳 Тут зʼявиться слайдер з рецептами
           </h3>
