@@ -21,7 +21,7 @@ export default function ProductDetailsPage() {
     <div className="flex flex-col items-center h-200 w-[300px]  mx-auto">
       <Breadcrumbs
         group={product.group}
-        subCategory={product.subCategory}
+        category={product.category}
         productName={product.name}
       />
 

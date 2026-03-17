@@ -36,7 +36,7 @@ export default function CatalogPage() {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <Breadcrumbs
-        subCategory={selectedGroup !== "All" ? selectedGroup : null}
+        category={selectedGroup !== "All" ? selectedGroup : null}
       />
 
       <section>

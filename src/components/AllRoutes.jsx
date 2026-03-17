@@ -4,6 +4,8 @@ import CatalogPage from "../pages/CatalogPage";
 import CartPage from "../pages/CartPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import AdminPage from "../pages/AdminPage";
 
 export const AllRoutes = () => {
   return (
@@ -12,6 +14,8 @@ export const AllRoutes = () => {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/product/:id" element={<ProductDetailsPage />} />
       <Route path="/catalog" element={<CatalogPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/admin" element={<AdminPage />} />
     </Routes>
   );
 };

@@ -22,7 +22,7 @@ export const Header = ({ onOpenCatalog }) => {
       </div>
       <div className="flex gap-4">
         <Link
-          to="/cabinet"
+          to="/admin"
           className="hover:bg-pink-200 hover:border-pink-600 border bg-pink-300 border-pink-500 p-2 rounded-lg px-4 mr-4"
         >
           Кабінет

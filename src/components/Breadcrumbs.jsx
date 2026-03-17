@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; // Нам потрібні посилання для переходів
 
-export const Breadcrumbs = ({ group, subCategory, productName }) => {
+export const Breadcrumbs = ({ group, category, productName }) => {
   return (
     <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 font-medium">
       {/* 1. Завжди показуємо посилання на Головну (або Магазин) */}
@@ -14,7 +14,7 @@ export const Breadcrumbs = ({ group, subCategory, productName }) => {
           <span className="text-gray-400">/</span>
           <span
             className={
-              !subCategory
+              !category
                 ? "text-pink-700 font-bold"
                 : "hover:text-pink-600 cursor-pointer"
             }
@@ -25,7 +25,7 @@ export const Breadcrumbs = ({ group, subCategory, productName }) => {
       )}
 
       {/* 3. Якщо передали підкатегорію — малюємо її */}
-      {subCategory && (
+      {category && (
         <>
           <span className="text-gray-400">/</span>
           <span
@@ -35,7 +35,7 @@ export const Breadcrumbs = ({ group, subCategory, productName }) => {
                 : "hover:text-pink-600 cursor-pointer"
             }
           >
-            {subCategory}
+            {category}
           </span>
         </>
       )}

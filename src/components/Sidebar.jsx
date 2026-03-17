@@ -36,11 +36,11 @@ export const Sidebar = ({ isOpen, onClose }) => {
           <ul className="mt-4 flex flex-col gap-3 ">
             {groups.map((group) => {
               // ЦЕЙ РЯДОК ДУЖЕ ВАЖЛИВИЙ! Ми кажемо: "Знайди всі підкатегорії для цієї групи"
-              const subCategories = [
+              const categories = [
                 ...new Set(
                   products
                     .filter((p) => p.group === group)
-                    .map((p) => p.subCategory),
+                    .map((p) => p.category),
                 ),
               ];
               return (
@@ -56,10 +56,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
                     <span>{group}</span>
                     <span>{expandedGroup === group ? "−" : "+"}</span>
                   </button>
-                  {/* Тепер тут subCategories буде працювати правильно */}
+                  {/* Тепер тут categories буде працювати правильно */}
                   {expandedGroup === group && (
                     <ul className="mt-1 ml-6 flex flex-col gap-1 border-l-2 border-pink-200 pl-4">
-                      {subCategories.map((sub) => (
+                      {categories.map((sub) => (
                         <li
                           key={sub}
                           className="py-1 px-3 text-sm text-gray-500 hover:text-pink-600 cursor-pointer"
