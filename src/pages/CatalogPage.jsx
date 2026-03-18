@@ -1,18 +1,16 @@
 import ProductCard from "../ProductCard";
-import { useState } from "react";
-import products from "../products";
+import { useState, useContext } from "react";
 import { useCart } from "../context/CartContext";
 import { Breadcrumbs } from "../components/Breadcrumbs";
-
-const initialList = products;
+import { ProductsContext } from "../context/ProductsContext";
 
 export default function CatalogPage() {
-  const [products, setProducts] = useState(initialList);
+  const { allProducts } = useContext(ProductsContext);
   const { cart, addToCart } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("All");
 
-  const filteredProducts = products.filter((item) => {
+  const filteredProducts = allProducts.filter((item) => {
     const matchesSearch = item.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -21,7 +19,10 @@ export default function CatalogPage() {
     return matchesSearch && matchesGroup;
   });
 
-  const groups = ["All", ...new Set(products.map((product) => product.group))];
+  const groups = [
+    "All",
+    ...new Set(allProducts.map((product) => product.group)),
+  ];
 
   return (
     <div className="p-4">
@@ -35,9 +36,7 @@ export default function CatalogPage() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <Breadcrumbs
-        category={selectedGroup !== "All" ? selectedGroup : null}
-      />
+      <Breadcrumbs category={selectedGroup !== "All" ? selectedGroup : null} />
 
       <section>
         {groups.map((group) => (

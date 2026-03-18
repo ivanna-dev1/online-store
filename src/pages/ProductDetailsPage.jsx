@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
-import products from "../products";
+import { useContext } from "react";
 import { useCart } from "../context/CartContext";
 import { Breadcrumbs } from "../components/Breadcrumbs";
+import { ProductsContext } from "../context/ProductsContext";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
   const { cart, addToCart, incrementQuantity, decrementQuantity } = useCart();
-  const product = products.find((item) => item.id === parseInt(id));
+  const { allProducts } = useContext(ProductsContext);
+  const product = allProducts.find((item) => item.id === parseInt(id));
 
   const isInCart = cart.some((item) => item.id === product?.id);
   if (!product) {

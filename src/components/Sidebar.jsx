@@ -1,9 +1,10 @@
-import products from "../products";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProductsContext } from "../context/ProductsContext";
 
 export const Sidebar = ({ isOpen, onClose }) => {
+  const { allProducts } = useContext(ProductsContext);
   const [expandedGroup, setExpandedGroup] = useState(null);
-  const groups = [...new Set(products.map((product) => product.group))];
+  const groups = [...new Set(allProducts.map((product) => product.group))];
 
   const handleGroupToggle = (groupName) => {
     setExpandedGroup(expandedGroup === groupName ? null : groupName);
@@ -38,7 +39,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
               // ЦЕЙ РЯДОК ДУЖЕ ВАЖЛИВИЙ! Ми кажемо: "Знайди всі підкатегорії для цієї групи"
               const categories = [
                 ...new Set(
-                  products
+                  allProducts
                     .filter((p) => p.group === group)
                     .map((p) => p.category),
                 ),

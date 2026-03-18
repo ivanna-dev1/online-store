@@ -1,10 +1,10 @@
-import { createContext, useContext, useState } from "react";
-import { useEffect } from "react";
-import products from "../products";
+import { createContext, useContext, useState, useEffect } from "react";
+import { ProductsContext } from "./ProductsContext";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  const { allProducts } = useContext(ProductsContext);
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
         ),
       );
     } else {
-      const product = products.find((item) => item.id === productId);
+      const product = allProducts.find((item) => item.id === Number(productId));
       setCart([...cart, { ...product, quantity: 1 }]);
     }
   };

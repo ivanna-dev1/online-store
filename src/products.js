@@ -483,7 +483,7 @@ const products = [
     isNew: false,
     inStock: true,
     image:
-      "https://images.silpo.ua/v2/products/1600x1600/webp/9b2235be-87a4-42_b8-b499-60dbdf1f7c2a.png",
+      "https://img.auchan.ua/rx/q_90,ofmt_webp,w_1200,h_572.4/auchan.ua/media/catalog/product/3/9/3914a16e05d28c0fd1f17a56e2dd7e7d500faca44e5d939cbbf5a911112d16a3.jpeg",
     description: "М'ясо-сирне асорті",
     fullDescription: `Набір із різних видів м’яса та сиру.
 

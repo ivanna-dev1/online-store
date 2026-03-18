@@ -5,20 +5,33 @@ import { Link } from "react-router-dom";
 function ProductCard({ product, isInCart }) {
   const { cart, addToCart, incrementQuantity, decrementQuantity } = useCart();
   return (
-    <div className="border bg-white border-gray-200 rounded-2xl p-4 flex flex-col justify-between h-100 max-w-50 shadow-md">
-      <Link to={`/product/${product.id}`}>
+    <div className="flex flex-col gap-1 justify-between bg-white border border-gray-200 rounded-2xl p-3 m-2  h-100 min-w-45 max-w-50 shadow-md relative">
+      <Link
+        to={`/product/${product.id}`}
+        className="flex flex-col gap-1 justify-between items-center h-2/3"
+      >
         {product.onSale && (
-          <span className="absolute top-2 right-2  text-pink-600 px-2 py-1 rounded-lg z-10">
-            Sale
+          <span className="absolute top-2 left-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
+            Sale!
           </span>
         )}
         {product.isNew && (
-          <span className="absolute top-2 right-2  text-pink-600 px-2 py-1 rounded-lg z-10">
-            New
+          <span className="absolute top-2 right-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
+            New!
           </span>
         )}
-        <img className="h-35" src={product.image} alt={product.name} />
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-row items-center justify-center border border-gray-200 rounded-lg h-1/2">
+          <img
+            className="flex flex-row items-center justify-center h-35 object-cover text-gray-500  border border-gray-200 rounded-lg"
+            src={
+              product.image
+                ? product.image
+                : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
+            }
+            alt={product.name}
+          />
+        </div>
+        <div className="flex flex-col justify-start w-full max-h-1/2  gap-1 border border-gray-200 rounded-lg">
           <h3 className="text-lg font-semibold">{product.name}</h3>
           <p className="text-gray-600">
             {product.price}грн + {product.discount}%
@@ -26,33 +39,35 @@ function ProductCard({ product, isInCart }) {
           <p className="text-gray-600">{product.description}</p>
         </div>
       </Link>
-      <button
-        onClick={() => addToCart(product.id)}
-        disabled={isInCart}
-        className={
-          isInCart
-            ? "cursor-not-allowed bg-gray-500 text-white px-4 py-2 rounded-lg"
-            : "cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg"
-        }
-      >
-        {isInCart ? "In Cart" : "Add"}
-      </button>
-      <div className="flex justify-around gap-2">
+      <div className="flex flex-col justify-around gap-1 border border-gray-200 rounded-lg w-full">
         <button
-          className=" flex items-center bg-green-200 border border-green-500 hover:bg-green-300 hover:border-green-500 text-black px-4 py-2 w-10 rounded-lg"
-          onClick={() => incrementQuantity(product.id)}
+          onClick={() => addToCart(product.id)}
+          disabled={isInCart}
+          className={
+            isInCart
+              ? "cursor-not-allowed bg-gray-500 text-white px-4 py-2 w-full rounded-lg"
+              : "cursor-pointer bg-blue-500 text-white px-4 py-2 w-full rounded-lg"
+          }
         >
-          +
+          {isInCart ? "In Cart" : "Add"}
         </button>
-        <p className="flex items-center text-gray-600 rounded-lg border border-gray-200 w-15 text-center px-4 py-2">
-          {cart.find((item) => item.id === product.id)?.quantity || 0}
-        </p>
-        <button
-          className="flex items-center bg-yellow-200 border border-yellow-500 hover:bg-yellow-300 hover:border-yellow-500 text-black px-4 py-2 w-10 rounded-lg"
-          onClick={() => decrementQuantity(product.id)}
-        >
-          -
-        </button>
+        <div className="flex flex-row justify-around gap-1">
+          <button
+            className=" flex items-center bg-green-200 border border-green-500 hover:bg-green-300 hover:border-green-500 text-black px-4 py-2  rounded-lg"
+            onClick={() => incrementQuantity(product.id)}
+          >
+            +
+          </button>
+          <p className="flex items-center text-gray-600 rounded-lg border border-gray-200 text-center px-4 py-2 max-w-1/3">
+            {cart.find((item) => item.id === product.id)?.quantity || 0}
+          </p>
+          <button
+            className="flex items-center bg-yellow-200 border border-yellow-500 hover:bg-yellow-300 hover:border-yellow-500 text-black px-4 py-2 rounded-lg"
+            onClick={() => decrementQuantity(product.id)}
+          >
+            -
+          </button>
+        </div>
       </div>
     </div>
   );

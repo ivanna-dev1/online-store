@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* .swiper-pagination-bullet {
+  color: #ec4899 !important;
+} */
+/* .swiper-pagination-horizontal {
+  bottom: 0px !important;
+} */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ec4899 !important;
+}
