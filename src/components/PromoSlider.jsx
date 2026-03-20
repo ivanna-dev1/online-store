@@ -36,34 +36,43 @@ export const PromoSlider = ({ title, productList }) => {
           <SwiperSlide key={product.id}>
             <div className="flex flex-row items-center justify-between gap-5 w-full h-full max-h-72 max-w-4xl px-5">
               <img
-                src={product.image}
+                className="border flex justify-center items-center border-gray-200 rounded-lg h-70 max-h-full w-1/3 max-w-full object-cover"
+                src={
+                  product.image
+                    ? product.image
+                    : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
+                }
                 alt={product.name}
-                className="flex justify-end items-center max-h-60 max-w-1/3"
               />
-              <div className="flex flex-col justify-center items-center gap-2 w-1/3 h-full max-h-60">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
-                {product.onSale ? (
-                  <div className="flex items-center gap-3 mt-2">
-                    <span className="text-2xl font-extrabold text-pink-600">
-                      {Math.round(product.price * (1 - product.discount / 100))}
-                      грн
-                    </span>
-                    <span className="text-gray-400 line-through text-lg">
-                      {product.price} грн
-                    </span>
-
-                    <span className="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-1 rounded-full border border-pink-200">
-                      -{product.discount}%
-                    </span>
+              <div className=" border border-gray-200 rounded-lg flex flex-col justify-around items-center gap-2 w-1/3 h-full max-h-60">
+                <div className="flex flex-col justify-center gap-1">
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <div className="flex flex-row justify-start items-center gap-1 w-full">
+                    {product.onSale ? (
+                      <div className="flex flex-row justify-start items-start gap-2">
+                        <span className="text-2xl font-extrabold text-pink-600">
+                          {Math.round(
+                            product.price * (1 - product.discount / 100),
+                          )}
+                          грн
+                        </span>
+                        <span className="text-gray-400 line-through text-lg">
+                          {product.price} грн
+                        </span>
+                        <span className="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-1 rounded-full border border-pink-200">
+                          -{product.discount}%
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex flex-row justify-start gap-3 ">
+                        <span className="text-xl font-bold text-pink-700">
+                          {product.price} грн
+                        </span>
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  <div className="flex items-center gap-3 mt-2">
-                    <span className="text-xl font-bold text-pink-700">
-                      {product.price} грн
-                    </span>
-                  </div>
-                )}
-                <p className="text-gray-600">{product.description}</p>
+                  <p className="text-gray-600">{product.description}</p>
+                </div>
                 <button
                   onClick={() => addToCart(product.id)}
                   className="mt-4 bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-pink-700 transition-all shadow-lg active:scale-95 w-fit"
@@ -71,7 +80,7 @@ export const PromoSlider = ({ title, productList }) => {
                   Купити зараз
                 </button>
               </div>
-              <p className="flex justify-start items-center text-gray-600 max-h-60 max-w-1/3 ">
+              <p className=" border border-gray-200 rounded-lg flex flex-row justify-around items-center text-gray-600 max-h-60 w-1/3 ">
                 {product.fullDescription}
               </p>
             </div>

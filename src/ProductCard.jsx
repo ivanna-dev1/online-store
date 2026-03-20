@@ -39,30 +39,30 @@ function ProductCard({ product, isInCart }) {
           <p className="text-gray-600">{product.description}</p>
         </div>
       </Link>
-      <div className="flex flex-col justify-around gap-1 border border-gray-200 rounded-lg w-full">
+      <div className="flex flex-col justify-center items-center gap-1 w-full p-2">
         <button
           onClick={() => addToCart(product.id)}
           disabled={isInCart}
           className={
             isInCart
-              ? "cursor-not-allowed bg-gray-500 text-white px-4 py-2 w-full rounded-lg"
-              : "cursor-pointer bg-blue-500 text-white px-4 py-2 w-full rounded-lg"
+              ? "cursor-not-allowed bg-gray-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95  w-full"
+              : "cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95 w-full"
           }
         >
-          {isInCart ? "In Cart" : "Add"}
+          {isInCart ? "В кошику" : "Додати"}
         </button>
-        <div className="flex flex-row justify-around gap-1">
+        <div className="flex justify-around gap-2 w-full">
           <button
-            className=" flex items-center bg-green-200 border border-green-500 hover:bg-green-300 hover:border-green-500 text-black px-4 py-2  rounded-lg"
+            className=" flex items-center bg-pink-100 border border-pink-500 hover:bg-pink-300 hover:border-pink-500 text-black px-4 py-2 rounded-lg w-1/3"
             onClick={() => incrementQuantity(product.id)}
           >
             +
           </button>
-          <p className="flex items-center text-gray-600 rounded-lg border border-gray-200 text-center px-4 py-2 max-w-1/3">
+          <p className="flex items-center text-gray-600 rounded-lg border border-gray-200 text-center px-4 py-2 w-1/3">
             {cart.find((item) => item.id === product.id)?.quantity || 0}
           </p>
           <button
-            className="flex items-center bg-yellow-200 border border-yellow-500 hover:bg-yellow-300 hover:border-yellow-500 text-black px-4 py-2 rounded-lg"
+            className="flex items-center bg-pink-100 border border-pink-500 hover:bg-pink-300 hover:border-pink-500 text-black px-4 py-2 rounded-lg w-1/3    "
             onClick={() => decrementQuantity(product.id)}
           >
             -

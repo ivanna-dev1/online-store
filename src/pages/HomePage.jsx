@@ -48,10 +48,8 @@ export default function HomePage() {
             🍳 Тут зʼявиться слайдер з рецептами
           </h3>
         </div>
-      </div>
-      {/* СЕКЦІЯ 2: Весь наш каталог (пошук, групи, товари) */}
-      <div className="flex flex-col items-center p-10  bg-white rounded-3xl shadow-sm mx-4 border border-pink-100">
-        <h1 className="text-4xl font-bold text-center text-pink-900 mb-8">
+        {/* СЕКЦІЯ 2: Весь наш каталог (пошук, групи, товари) */}
+        <h1 className="text-4xl font-bold text-center text-pink-900 mt-8">
           Наш повний асортимент
         </h1>
         <CatalogPage />

@@ -36,6 +36,7 @@ export default function CatalogPage() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+
       <Breadcrumbs category={selectedGroup !== "All" ? selectedGroup : null} />
 
       <section>
@@ -44,8 +45,8 @@ export default function CatalogPage() {
             key={group}
             className={
               selectedGroup === group
-                ? "bg-pink-800 text-white px-4 py-2 rounded-lg"
-                : "bg-gray-500 text-white px-4 py-2 rounded-lg"
+                ? "bg-pink-800 text-white px-4 py-2 rounded-lg mr-1 mb-1"
+                : "bg-gray-500 text-white px-4 py-2 rounded-lg mr-1 mb-1"
             }
             onClick={() => setSelectedGroup(group)}
           >

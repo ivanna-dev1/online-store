@@ -14,7 +14,7 @@ export default function CartPage() {
             key={item.id}
             className="flex justify-between items-center border border-gray-300 rounded-md p-5"
           >
-            • {item.name} - ${item.price}
+            • {item.name} - {item.price}грн
             <div className="flex flex-row items-center gap-2">
               <button
                 className="flex items-center bg-green-200 border border-green-500 hover:bg-green-300 hover:border-green-500 text-black px-4 py-2 w-10 rounded-lg"
