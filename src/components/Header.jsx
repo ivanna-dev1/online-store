@@ -29,7 +29,7 @@ export const Header = ({ onOpenCatalog }) => {
         </Link>
         <Link
           to="/cart"
-          className="relative hover:bg-blue-200 hover:border-blue-500 border bg-blue-300 border-blue-500 p-2 rounded-lg px-4 mr-4 flex items-center justify-center"
+          className="relative border bg-blue-300 border-blue-500 p-2 hover:bg-blue-200 hover:border-blue-500 rounded-lg px-4 mr-4 flex items-center justify-center"
         >
           <span className="text-2xl">🛒</span>
           {cart.length > 0 && (

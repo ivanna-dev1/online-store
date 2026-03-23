@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 function ProductCard({ product, isInCart }) {
   const { cart, addToCart, incrementQuantity, decrementQuantity } = useCart();
   return (
-    <div className="flex flex-col gap-1 justify-between bg-white border border-gray-200 rounded-2xl p-3 m-2  h-100 min-w-45 max-w-50 shadow-md relative">
+    <div className="flex flex-col justify-between bg-white border border-gray-200 rounded-2xl p-2 m-2  h-100 min-w-45 max-w-50 shadow-md relative">
       <Link
         to={`/product/${product.id}`}
-        className="flex flex-col gap-1 justify-between items-center h-2/3"
+        className="flex flex-col  justify-start items-start h-fit w-full"
       >
         {product.onSale && (
           <span className="absolute top-2 left-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
@@ -20,9 +20,9 @@ function ProductCard({ product, isInCart }) {
             New!
           </span>
         )}
-        <div className="flex flex-row items-center justify-center border border-gray-200 rounded-lg h-1/2">
+        <div className="flex items-center justify-center border border-gray-200 rounded-lg h-1/2 w-fit mx-auto">
           <img
-            className="flex flex-row items-center justify-center h-35 object-cover text-gray-500  border border-gray-200 rounded-lg"
+            className="flex flex-row items-center justify-center object-cover text-gray-500  border border-gray-200 rounded-lg h-full w-fit"
             src={
               product.image
                 ? product.image
@@ -31,15 +31,29 @@ function ProductCard({ product, isInCart }) {
             alt={product.name}
           />
         </div>
-        <div className="flex flex-col justify-start w-full max-h-1/2  gap-1 border border-gray-200 rounded-lg">
-          <h3 className="text-lg font-semibold">{product.name}</h3>
-          <p className="text-gray-600">
-            {product.price}грн + {product.discount}%
+        <div className="flex flex-col items-start w-fit max-h-1/2  gap-1 border border-gray-200 rounded-lg">
+          <h3 className="text-lg font-semibold w-full">{product.name}</h3>
+          <p className="text-gray-600 w-full">
+            {product.onSale ? (
+              <div className="flex flex-row justify-start gap-1 ">
+                <span className="text-lg text-black">
+                  {product.price}грн + {product.discount}%
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-row justify-start gap-1 ">
+                <span className="text-lg text-black">{product.price}грн</span>
+              </div>
+            )}
           </p>
-          <p className="text-gray-600">{product.description}</p>
+          <p className="text-sm text-gray-600 w-full">
+            {product.description.length > 70
+              ? product.description.slice(0, 70) + "..."
+              : product.description}
+          </p>
         </div>
       </Link>
-      <div className="flex flex-col justify-center items-center gap-1 w-full p-2">
+      <div className="flex flex-col justify-center items-center gap-1 h-1/4 w-full p-2 mb-2">
         <button
           onClick={() => addToCart(product.id)}
           disabled={isInCart}

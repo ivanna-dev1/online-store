@@ -36,7 +36,7 @@ export const PromoSlider = ({ title, productList }) => {
           <SwiperSlide key={product.id}>
             <div className="flex flex-row items-center justify-between gap-5 w-full h-full max-h-72 max-w-4xl px-5">
               <img
-                className="border flex justify-center items-center border-gray-200 rounded-lg h-70 max-h-full w-1/3 max-w-full object-cover"
+                className="border flex justify-center items-center border-gray-200 rounded-lg h-fit w-1/3 max-w-full object-cover"
                 src={
                   product.image
                     ? product.image

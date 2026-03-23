@@ -15,12 +15,24 @@ export default function ProductsProvider({ children }) {
     );
   }, [allProducts]);
 
+  const deleteProduct = (id) => {
+    setAllProducts((prev) => prev.filter((prod) => prod.id !== id));
+  };
+
   const addProduct = (newProduct) => {
     setAllProducts((prev) => [...prev, newProduct]);
   };
-
+  const updateProduct = (updatedProduct) => {
+    setAllProducts((prev) =>
+      prev.map((prod) =>
+        prod.id === updatedProduct.id ? updatedProduct : prod,
+      ),
+    );
+  };
   return (
-    <ProductsContext.Provider value={{ allProducts, addProduct }}>
+    <ProductsContext.Provider
+      value={{ allProducts, addProduct, deleteProduct, updateProduct }}
+    >
       {children}
     </ProductsContext.Provider>
   );

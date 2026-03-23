@@ -97,9 +97,11 @@ export default function ProductDetailsPage() {
             </div>
           </div>
         </div>
-        <div className="border-1 border-gray-200 rounded-lg flex flex-col justify-center items-center w-1/3 p-5">
-          <p className="flex w-full text-gray-600 ">
-            {product.fullDescription}
+        <div className="border border-gray-200 rounded-lg flex flex-col justify-center items-center w-1/3 p-5">
+          <p>
+            {product.fullDescription.length > 140
+              ? product.fullDescription.slice(0, 140) + "..."
+              : product.fullDescription}
           </p>
         </div>
       </div>
