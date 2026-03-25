@@ -516,8 +516,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Охолоджене куряче філе",
     fullDescription: `Ніжне куряче філе з високим вмістом білка.
 
@@ -533,8 +532,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Слабосолений лосось",
     fullDescription: `Філе лосося зі слабким солінням.
 
@@ -584,8 +582,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Паста Penne",
     fullDescription: `Макарони з твердих сортів пшениці.
 
@@ -601,8 +598,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Оливкова олія Extra Virgin",
     fullDescription: `Оливкова олія першого холодного віджиму.
 
@@ -618,8 +614,7 @@ const products = [
     discount: 0,
     isNew: true,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Натуральний акацієвий мед",
     fullDescription: `Світлий мед із ніжним квітковим ароматом.
 
@@ -635,8 +630,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Майонез Провансаль",
     fullDescription: `Класичний майонез із густою текстурою та ніжним смаком.
 
@@ -652,8 +646,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: false,
-    image:
-      "https://images.silpo.ua/v2/products/1600x1600/webp/62005632-fd3b-4d6c-8110-34199fbd8a5a.png",
+    image: "./img/mainimg.png",
     description: "Фруктовий нектар",
     fullDescription: `Нектар із суміші екзотичних фруктів.
 
@@ -737,8 +730,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Питна негазована вода",
     fullDescription: `Чиста негазована питна вода.
 
@@ -754,8 +746,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Листовий зелений чай",
     fullDescription: `Натуральний зелений чай із легким трав’янистим ароматом.
 
@@ -822,8 +813,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Світле фільтроване пиво",
     fullDescription: `Світле пиво з легкою гірчинкою та освіжаючим смаком.`,
   },
@@ -871,8 +861,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: false,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Темний шоколад 70%",
     fullDescription: `Шоколад із високим вмістом какао та насиченим смаком.`,
   },
@@ -886,8 +875,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Асорті шоколадних цукерок",
     fullDescription: `Набір шоколадних цукерок із різними начинками.`,
   },
@@ -903,8 +891,7 @@ const products = [
     discount: 0,
     isNew: true,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Цільнозерновий хліб",
     fullDescription: `Ароматний хліб із цільнозернового борошна.`,
   },
@@ -918,8 +905,7 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
     description: "Білий пшеничний хліб",
     fullDescription: `М’який пшеничний хліб із ніжною текстурою.`,
   },
@@ -933,8 +919,49 @@ const products = [
     discount: 0,
     isNew: false,
     inStock: true,
-    image:
-      "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png",
+    image: "./img/mainimg.png",
+    description: "Булочка з маком",
+    fullDescription: `Здобна булочка з маком, м’яка та ароматна.`,
+  },
+  {
+    id: 57,
+    name: "Хліб цільнозерновий",
+    group: "Хліб та випічка",
+    category: "Випічка",
+    price: 42,
+    onSale: false,
+    discount: 0,
+    isNew: true,
+    inStock: true,
+    image: "./img/mainimg.png",
+    description: "Цільнозерновий хліб",
+    fullDescription: `Ароматний хліб із цільнозернового борошна.`,
+  },
+  {
+    id: 58,
+    name: "Хліб білий нарізний",
+    group: "Хліб та випічка",
+    category: "Хліб",
+    price: 32,
+    onSale: false,
+    discount: 0,
+    isNew: false,
+    inStock: true,
+    image: "./img/mainimg.png",
+    description: "Білий пшеничний хліб",
+    fullDescription: `М’який пшеничний хліб із ніжною текстурою.`,
+  },
+  {
+    id: 59,
+    name: "Булочка з маком",
+    group: "Хліб та випічка",
+    category: "Булочки",
+    price: 22,
+    onSale: false,
+    discount: 0,
+    isNew: false,
+    inStock: true,
+    image: "./img/mainimg.png",
     description: "Булочка з маком",
     fullDescription: `Здобна булочка з маком, м’яка та ароматна.`,
   },

@@ -5,13 +5,9 @@ import { useContext } from "react";
 export const AdminProductCard = ({ product }) => {
   const { deleteProduct } = useContext(ProductsContext);
   return (
-    <div className="flex flex-col justify-start text-sm gap-1 shadow-2xl bg-white p-3 rounded-2xl w-50 h-85 m-3">
+    <div className="flex flex-col justify-start text-xs gap-1 shadow-2xl bg-white p-3 rounded-2xl w-45 h-65 m-3">
       <img
-        src={
-          product.image
-            ? product.image
-            : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
-        }
+        src={product.image ? product.image : "./img/mainimg.png"}
         alt={product.name}
         className="w-fit h-1/4 object-cover"
       />
@@ -29,11 +25,15 @@ export const AdminProductCard = ({ product }) => {
         </div>
         <p>{product.isNew ? "• Новинка - Так" : "• Новинка - Ні"}</p>
         <p>{product.inStock ? "• В наявності - Так" : "• В наявності - Ні"}</p>
-        <p>{product.description && "• " + product.description.slice(0, 50)}</p>
-        <p>
-          {product.fullDescription.length > 85
-            ? "• " + product.fullDescription.slice(0, 85) + "..."
-            : "• " + product.fullDescription}
+        <p className="text-xs">
+          {product.description ? "• " + product.description : "• Опис - Ні"}
+        </p>
+        <p className="text-xs">
+          {product.fullDescription
+            ? product.fullDescription.length > 65
+              ? "• " + product.fullDescription.slice(0, 65) + "..."
+              : "• " + product.fullDescription
+            : "• Повний опис - Ні"}
         </p>
       </div>
     </div>

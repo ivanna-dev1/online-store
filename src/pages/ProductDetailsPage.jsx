@@ -32,11 +32,7 @@ export default function ProductDetailsPage() {
       <div className=" flex flex-row justify-between border bg-white border-gray-200 rounded-2xl w-full max-w-221 h-70 p-4 gap-4">
         <img
           className="border flex justify-center items-center border-gray-200 rounded-lg h-70 max-h-full w-1/3 max-w-full object-cover"
-          src={
-            product.image
-              ? product.image
-              : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
-          }
+          src={product.image ? product.image : "./img/mainimg.png"}
           alt={product.name}
         />
         <div className="border border-gray-200 rounded-lg flex flex-col justify-around items-center p-2 w-1/3 gap-1">

@@ -20,6 +20,20 @@ export default function AdminPage() {
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [view, setView] = useState("add");
+  const [showAll, setShowAll] = useState(false);
+  const [filterOptions, setFilterOptions] = useState({
+    showFilters: false,
+    searchTerm: "",
+    group: "",
+    category: "",
+    price: "",
+    onSale: false,
+    isNew: false,
+    inStock: false,
+    hasPhoto: false,
+    hasDescription: false,
+    hasFullDescription: false,
+  });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,7 +64,7 @@ export default function AdminPage() {
       price: "",
       onSale: false,
       discount: null,
-      isNew: false,
+      isNew: true,
       inStock: true,
       image: "",
       description: "",
@@ -76,27 +90,25 @@ export default function AdminPage() {
     // переключитися на вкладку додавання
     setView("add");
   };
+  const handleShowAll = () => {
+    setShowAll(!showAll);
+  };
   return (
     <div>
-      <h1 className="text-4xl flex justify-center items-center font-bold text-center text-pink-900 mt-10 mb-5">
+      <h1 className="text-4xl flex justify-center items-center font-bold text-center text-pink-900 mt-5 mb-3">
         Сторінка адміністратора
       </h1>
-      <p className="flex justify-center items-center text-md font-bold text-center text-pink-800 m-5">
+      <p className="flex justify-center items-center text-md font-bold text-center text-pink-800 m-3">
         Всього товарів: {allProducts.length}
       </p>
-      {showSuccess && (
-        <div className="flex justify-center items-center text-2xl font-bold text-center text-blue-400 m-5">
-          Товар успішно додано в каталог!
-        </div>
-      )}
       <div className="flex flex-col items-center justify-start w-full">
-        <div className="flex justify-between items-center lg:w-1/3 w-1/2 mb-5 bg-blue-100 rounded-lg">
+        <div className="flex justify-between items-center lg:w-1/3 md:w-1/2 w-3/4 mt-2 mb-3 bg-blue-100 rounded-lg">
           <button
             onClick={() => setView("add")}
             className={
               view === "add"
-                ? " bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 w-1/2 rounded-lg transition-all"
-                : " bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 w-1/2 rounded-lg transition-all"
+                ? " flex-1 bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
+                : " flex-1 bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
             }
           >
             Додати товар
@@ -105,24 +117,29 @@ export default function AdminPage() {
             onClick={() => setView("manage")}
             className={
               view === "manage"
-                ? " bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 w-1/2 rounded-lg transition-all"
-                : " bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 w-1/2 rounded-lg transition-all"
+                ? " flex-1 bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
+                : " flex-1 bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full rounded-lg transition-all"
             }
           >
             Керувати товарами
           </button>
         </div>
+        {showSuccess && (
+          <div className="flex justify-center items-center text-2xl font-bold text-center text-blue-400 mb-2">
+            Товар успішно додано в каталог!
+          </div>
+        )}
         {view === "add" && (
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 items-center justify-center lg:w-1/3 w-1/2 shadow-2xl bg-white p-10 rounded-2xl"
+            className="flex flex-col gap-4 items-center justify-center lg:w-1/3 md:w-1/2 w-3/4 shadow-2xl bg-white p-10 rounded-2xl"
           >
             <p className="text-2xl font-bold text-center text-gray-500 mb-5">
               Додавання нового товару
             </p>
-            <p className="text-gray-500 border border-pink-200 rounded-lg p-2 pl-5 w-full">
+            {/* <p className="text-gray-500 border border-pink-200 rounded-lg p-2 pl-5 w-full">
               id {formData.id ? formData.id : id}
-            </p>
+            </p> */}
             <input
               required
               type="text"
@@ -291,35 +308,220 @@ export default function AdminPage() {
         )}
       </div>
       {view === "manage" && (
-        <div className="flex flex-col items-center justify-start mt-5">
-          <p className="text-xl font-medium m-1">Останні додані товари:</p>
+        <div className="relative flex flex-col items-center justify-start">
+          <p className="text-xl font-medium mb-1">Останні додані товари:</p>
+          <button
+            onClick={() =>
+              setFilterOptions({
+                ...filterOptions,
+                showFilters: !filterOptions.showFilters,
+              })
+            }
+            className="absolute top-2 left-2 md:left-13 border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black md:px-4 px-2 py-2 rounded-lg transition-all active:scale-95 md:w-30 w-25"
+          >
+            Фільтри →
+          </button>
+          {filterOptions.showFilters && (
+            <div className="border border-pink-200 rounded-lg p-1 pl-2 w-fit text-md text-gray-800 flex flex-col  items-center justify-start gap-1 m-1 z-10">
+              <input
+                type="text"
+                name="searchTerm"
+                placeholder="Назва або опис..."
+                value={filterOptions.searchTerm}
+                // onChange={handleFilterChange}
+                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
+              />
+              <input
+                type="text"
+                name="group"
+                value={filterOptions.group}
+                // onChange={handleFilterChange}
+                placeholder="Група"
+                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
+              />
+              <input
+                type="text"
+                name="category"
+                value={filterOptions.category}
+                // onChange={handleFilterChange}
+                placeholder="Категорія"
+                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
+              />
+              <input
+                type="number"
+                min="0"
+                max="999999"
+                name="price"
+                value={filterOptions.price}
+                // onChange={handleFilterChange}
+                placeholder="Ціна"
+                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8 "
+              />
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  cursor-pointer
+                  htmlFor="onSale"
+                  className={formData.onSale ? "text-black" : "text-gray-500"}
+                >
+                  Акція
+                </label>
+                <input
+                  type="checkbox"
+                  name="onSale"
+                  checked={formData.onSale}
+                  onChange={handleChange}
+                  className="border rounded-lg"
+                />
+              </div>
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  cursor-pointer
+                  htmlFor="inStock"
+                  className={formData.inStock ? "text-black" : "text-gray-500"}
+                >
+                  В наявності
+                </label>
+                <input
+                  type="checkbox"
+                  name="inStock"
+                  checked={formData.inStock}
+                  onChange={handleChange}
+                  className="border rounded-lg"
+                />
+              </div>
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  htmlFor="isNew"
+                  className={formData.isNew ? "text-black" : "text-gray-500"}
+                >
+                  Новинка
+                </label>
+                <input
+                  type="checkbox"
+                  name="isNew"
+                  checked={formData.isNew}
+                  onChange={handleChange}
+                  className="border rounded-lg"
+                />
+              </div>
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  htmlFor="description"
+                  className={
+                    formData.description ? "text-black" : "text-gray-500"
+                  }
+                >
+                  Опис
+                </label>
+                <input
+                  type="checkbox"
+                  name="description"
+                  checked={formData.description}
+                  onChange={handleChange}
+                  className="border rounded-lg p-2"
+                />
+              </div>
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  htmlFor="fullDescription"
+                  className={
+                    formData.fullDescription ? "text-black" : "text-gray-500"
+                  }
+                >
+                  Повний опис
+                </label>
+                <input
+                  type="checkbox"
+                  name="fullDescription"
+                  checked={formData.fullDescription}
+                  onChange={handleChange}
+                  className="border rounded-lg"
+                />
+              </div>
+              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                <label
+                  htmlFor="hasImage"
+                  className={formData.hasImage ? "text-black" : "text-gray-500"}
+                >
+                  Є фото
+                </label>
+                <input
+                  type="checkbox"
+                  name="hasImage"
+                  checked={formData.hasImage}
+                  onChange={handleChange}
+                  className="border rounded-lg"
+                />
+              </div>
+              <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1 w-full">
+                <button
+                  // onClick={handleClearFilters}
+                  className="flex-1 border border-pink-500 bg-pink-100 hover:bg-pink-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95 h-8"
+                >
+                  Очистити
+                </button>
+                <button
+                  // onClick={handleApplyFilters}
+                  className="flex-1 border border-blue-500 bg-blue-100 hover:bg-blue-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95  h-8"
+                >
+                  Застосувати
+                </button>
+              </div>
+            </div>
+          )}
           <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1">
             {allProducts
               .slice(-5)
               .reverse()
               .map((product) => (
                 <div className="relative p-1 m-1" key={product.id}>
-                  <div className="absolute top-6 right-2 flex flex-col items-center justify-center gap-1 w-27">
+                  <div className="absolute top-5 right-2 flex flex-col items-center justify-center gap-1 w-22">
                     <button
-                      className=" border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-4 py-2 rounded-lg transition-all active:scale-95 w-full"
+                      className="flex items-center justify-center border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
                       onClick={() => handleUpdate(product)}
                     >
                       Редагувати
                     </button>
                     <button
-                      className=" border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-4 py-2 rounded-lg transition-all active:scale-95 w-full"
+                      className="flex items-center justify-center border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
                       onClick={() => deleteProduct(product.id)}
                     >
                       Видалити
                     </button>
                   </div>
-                  <AdminProductCard
-                    product={product}
-                    className="border-red-500"
-                  />
+                  <AdminProductCard product={product} />
                 </div>
               ))}
           </div>
+          <button
+            onClick={handleShowAll}
+            className="absolute bottom-3 right-5 border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black px-4 py-2 rounded-lg transition-all active:scale-95 w-30"
+          >
+            Більше →
+          </button>
+          {showAll && (
+            <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1">
+              {allProducts.map((product) => (
+                <div className="relative p-1 m-1" key={product.id}>
+                  <div className="absolute top-5 right-2 flex flex-col items-center justify-center gap-1 w-22">
+                    <button
+                      className="flex items-center justify-center border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
+                      onClick={() => handleUpdate(product)}
+                    >
+                      Редагувати
+                    </button>
+                    <button
+                      className="flex items-center justify-center border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
+                      onClick={() => deleteProduct(product.id)}
+                    >
+                      Видалити
+                    </button>
+                  </div>
+                  <AdminProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

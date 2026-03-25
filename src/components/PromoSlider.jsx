@@ -37,11 +37,7 @@ export const PromoSlider = ({ title, productList }) => {
             <div className="flex flex-row items-center justify-between gap-5 w-full h-full max-h-72 max-w-4xl px-5">
               <img
                 className="border flex justify-center items-center border-gray-200 rounded-lg h-fit w-1/3 max-w-full object-cover"
-                src={
-                  product.image
-                    ? product.image
-                    : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
-                }
+                src={product.image ? product.image : "./img/mainimg.png"}
                 alt={product.name}
               />
               <div className=" border border-gray-200 rounded-lg flex flex-col justify-around items-center gap-2 w-1/3 h-full max-h-60">

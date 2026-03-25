@@ -23,11 +23,7 @@ function ProductCard({ product, isInCart }) {
         <div className="flex items-center justify-center border border-gray-200 rounded-lg h-1/2 w-fit mx-auto">
           <img
             className="flex flex-row items-center justify-center object-cover text-gray-500  border border-gray-200 rounded-lg h-full w-fit"
-            src={
-              product.image
-                ? product.image
-                : "https://standardoil.com.ua/image/cache/catalog/smazki-folder/0/uploads-n6-73a54bb4852011ee8a1d00155d006309_7a4219a8852011ee8a1d00155d006309-1000x1000.png"
-            }
+            src={product.image ? product.image : "./img/mainimg.png"}
             alt={product.name}
           />
         </div>
