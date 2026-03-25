@@ -20,7 +20,7 @@ export const AdminProductCard = ({ product }) => {
         </div>
         <div className="flex flex-row flex-wrap justify-start">
           <p>• {product.price}грн</p>
-          <p>{product.onSale ? "- Акція" : "- Акція - Ні"}</p>
+          <p>{product.onSale ? "- Знижка " : "- Знижка- Ні"}</p>
           <p>{product.discount ? `- ${product.discount}%` : ""}</p>
         </div>
         <p>{product.isNew ? "• Новинка - Так" : "• Новинка - Ні"}</p>

@@ -8,6 +8,11 @@ export default function HomePage() {
   const saleProducts = allProducts.filter((product) => product.onSale === true);
   const newProducts = allProducts.filter((product) => product.isNew === true);
 
+  // window.scrollTo({
+  //   top: 0,
+  //   behavior: "smooth",
+  // });
+
   return (
     <div className="flex flex-col">
       {/* СЕКЦІЯ 1: Привітання та Слайдери */}

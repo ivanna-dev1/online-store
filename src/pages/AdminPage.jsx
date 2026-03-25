@@ -26,15 +26,20 @@ export default function AdminPage() {
     searchTerm: "",
     group: "",
     category: "",
-    price: "",
-    onSale: false,
+    priceMin: "",
+    priceMax: "",
+    isOnSale: false,
     isNew: false,
-    inStock: false,
+    isInStock: false,
     hasPhoto: false,
     hasDescription: false,
     hasFullDescription: false,
   });
 
+  // window.scrollTo({
+  //   top: 0,
+  //   behavior: "smooth",
+  // });
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -93,6 +98,70 @@ export default function AdminPage() {
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
+  const handleFilterChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFilterOptions((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+  const clearFilters = () => {
+    setFilterOptions({
+      showFilters: false,
+      searchTerm: "",
+      group: "",
+      category: "",
+      priceMin: "",
+      priceMax: "",
+      isOnSale: false,
+      isNew: false,
+      isInStock: false,
+      hasPhoto: false,
+      hasDescription: false,
+      hasFullDescription: false,
+    });
+  };
+  const filteredProducts = allProducts.filter((product) => {
+    return (
+      (product.name
+        .toLowerCase()
+        .includes(filterOptions.searchTerm.toLowerCase()) ||
+        product.description
+          .toLowerCase()
+          .includes(filterOptions.searchTerm.toLowerCase()) ||
+        product.fullDescription
+          .toLowerCase()
+          .includes(filterOptions.searchTerm.toLowerCase())) &&
+      (!filterOptions.group || product.group === filterOptions.group) &&
+      (!filterOptions.category ||
+        product.category === filterOptions.category) &&
+      (!filterOptions.priceMin ||
+        product.price >= Number(filterOptions.priceMin)) &&
+      (!filterOptions.priceMax ||
+        product.price <= Number(filterOptions.priceMax)) &&
+      (!filterOptions.isOnSale || product.onSale === filterOptions.isOnSale) &&
+      (!filterOptions.isNew || product.isNew === filterOptions.isNew) &&
+      (!filterOptions.isInStock ||
+        product.inStock === filterOptions.isInStock) &&
+      (!filterOptions.hasPhoto || product.image.length > 0) &&
+      (!filterOptions.hasDescription || product.description.length > 0) &&
+      (!filterOptions.hasFullDescription || product.fullDescription.length > 0)
+    );
+  });
+  const isFiltering =
+    filterOptions.searchTerm ||
+    filterOptions.group ||
+    filterOptions.category ||
+    filterOptions.isOnSale ||
+    filterOptions.isNew ||
+    filterOptions.isInStock ||
+    filterOptions.hasPhoto ||
+    filterOptions.hasDescription ||
+    filterOptions.hasFullDescription;
+  const shouldShowAll = showAll || isFiltering;
+  const displayedProducts = shouldShowAll
+    ? filteredProducts
+    : filteredProducts.slice(-5).reverse();
   return (
     <div>
       <h1 className="text-4xl flex justify-center items-center font-bold text-center text-pink-900 mt-5 mb-3">
@@ -132,7 +201,7 @@ export default function AdminPage() {
         {view === "add" && (
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 items-center justify-center lg:w-1/3 md:w-1/2 w-3/4 shadow-2xl bg-white p-10 rounded-2xl"
+            className="flex flex-col gap-1 items-center justify-center lg:w-1/3 md:w-1/2 w-3/4 shadow-2xl bg-white p-5 rounded-2xl"
           >
             <p className="text-2xl font-bold text-center text-gray-500 mb-5">
               Додавання нового товару
@@ -222,6 +291,8 @@ export default function AdminPage() {
               />
             </div>
             <input
+              {...(formData.onSale && "required")}
+              {...(formData.onSale ? "" : "disabled")}
               maxLength="2"
               min="0"
               max="99"
@@ -270,19 +341,6 @@ export default function AdminPage() {
                 className="border rounded-lg"
               />
             </div>
-            <div className=" flex flex-col items-center justify-center p-6 border-pink-200 rounded-lg pl-5 w-full border-dashed border-2">
-              <label htmlFor="image" className="text-pink-400 mb-5">
-                Перетягніть файл сюди або вставте посилання нижче
-              </label>
-              <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="#Зображення"
-                className="border border-pink-200 rounded-lg p-2 pl-5 w-full"
-              />
-            </div>
             <textarea
               name="description"
               value={formData.description}
@@ -297,6 +355,19 @@ export default function AdminPage() {
               placeholder="Повний опис"
               className="border border-pink-200 rounded-lg p-2 pl-5 w-full"
             ></textarea>
+            <div className=" flex flex-col items-center justify-center p-6 border-pink-200 rounded-lg pl-5 w-full border-dashed border-2">
+              <label htmlFor="image" className="text-pink-400 mb-5">
+                Перетягніть файл сюди або вставте посилання нижче
+              </label>
+              <input
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+                placeholder="#Зображення"
+                className="border border-pink-200 rounded-lg p-2 pl-5 w-full"
+              />
+            </div>
             <button
               onClick={handleSubmit}
               type="submit"
@@ -310,218 +381,290 @@ export default function AdminPage() {
       {view === "manage" && (
         <div className="relative flex flex-col items-center justify-start">
           <p className="text-xl font-medium mb-1">Останні додані товари:</p>
-          <button
-            onClick={() =>
-              setFilterOptions({
-                ...filterOptions,
-                showFilters: !filterOptions.showFilters,
-              })
-            }
-            className="absolute top-2 left-2 md:left-13 border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black md:px-4 px-2 py-2 rounded-lg transition-all active:scale-95 md:w-30 w-25"
-          >
-            Фільтри →
-          </button>
+          <div className="flex flex-col gap-1 absolute top-0 left-1 md:left-3 z-10">
+            <button
+              onClick={() =>
+                setFilterOptions({
+                  ...filterOptions,
+                  showFilters: !filterOptions.showFilters,
+                })
+              }
+              className="border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95 h-10 w-25"
+            >
+              Фільтри →
+            </button>
+            <button
+              onClick={handleShowAll}
+              className="border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95 h-10 w-25"
+            >
+              {showAll ? "Менше" : "Більше→"}
+            </button>
+          </div>
           {filterOptions.showFilters && (
-            <div className="border border-pink-200 rounded-lg p-1 pl-2 w-fit text-md text-gray-800 flex flex-col  items-center justify-start gap-1 m-1 z-10">
-              <input
-                type="text"
-                name="searchTerm"
-                placeholder="Назва або опис..."
-                value={filterOptions.searchTerm}
-                // onChange={handleFilterChange}
-                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
-              />
-              <input
-                type="text"
-                name="group"
-                value={filterOptions.group}
-                // onChange={handleFilterChange}
-                placeholder="Група"
-                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
-              />
-              <input
-                type="text"
-                name="category"
-                value={filterOptions.category}
-                // onChange={handleFilterChange}
-                placeholder="Категорія"
-                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
-              />
-              <input
-                type="number"
-                min="0"
-                max="999999"
-                name="price"
-                value={filterOptions.price}
-                // onChange={handleFilterChange}
-                placeholder="Ціна"
-                className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8 "
-              />
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  cursor-pointer
-                  htmlFor="onSale"
-                  className={formData.onSale ? "text-black" : "text-gray-500"}
-                >
-                  Акція
-                </label>
+            <div
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+              onClick={() =>
+                setFilterOptions({
+                  ...filterOptions,
+                  showFilters: false,
+                })
+              }
+            >
+              <div
+                className="fixed left-5 top-30  h-full bg-white z-50 shadow-2xl px-5 py-2 border border-pink-200 rounded-lg pl-2 w-fit text-md text-gray-800 flex flex-col  items-center justify-start gap-1 m-1"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between w-full mb-2 ">
+                  <p className="text-pink-800 text-xl font-medium pl-2">
+                    Фільтри
+                  </p>
+                  <p
+                    className=" text-xl font-bold cursor-pointer"
+                    onClick={() =>
+                      setFilterOptions({
+                        ...filterOptions,
+                        showFilters: false,
+                      })
+                    }
+                  >
+                    X
+                  </p>
+                </div>
                 <input
-                  type="checkbox"
-                  name="onSale"
-                  checked={formData.onSale}
-                  onChange={handleChange}
-                  className="border rounded-lg"
+                  type="text"
+                  name="searchTerm"
+                  placeholder="Назва або опис..."
+                  value={filterOptions.searchTerm}
+                  onChange={handleFilterChange}
+                  className="border border-pink-200 rounded-lg p-2 pl-2 w-full h-8"
                 />
-              </div>
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  cursor-pointer
-                  htmlFor="inStock"
-                  className={formData.inStock ? "text-black" : "text-gray-500"}
+                <select
+                  name="group"
+                  value={filterOptions.group}
+                  onChange={handleFilterChange}
+                  className="border border-pink-200 rounded-lg  pl-2 w-full h-8 "
                 >
-                  В наявності
-                </label>
-                <input
-                  type="checkbox"
-                  name="inStock"
-                  checked={formData.inStock}
-                  onChange={handleChange}
-                  className="border rounded-lg"
-                />
-              </div>
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  htmlFor="isNew"
-                  className={formData.isNew ? "text-black" : "text-gray-500"}
+                  <option
+                    value=""
+                    className={
+                      filterOptions.group ? "text-black" : "text-gray-400"
+                    }
+                  >
+                    Група
+                  </option>
+                  {groups.map((group) => (
+                    <option
+                      key={group}
+                      name="group"
+                      value={group}
+                      className="text-black"
+                    >
+                      {group}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  name="category"
+                  value={filterOptions.category}
+                  onChange={handleFilterChange}
+                  className="border  border-pink-200 rounded-lg pl-2 w-full h-8"
                 >
-                  Новинка
-                </label>
-                <input
-                  type="checkbox"
-                  name="isNew"
-                  checked={formData.isNew}
-                  onChange={handleChange}
-                  className="border rounded-lg"
-                />
-              </div>
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  htmlFor="description"
-                  className={
-                    formData.description ? "text-black" : "text-gray-500"
-                  }
-                >
-                  Опис
-                </label>
-                <input
-                  type="checkbox"
-                  name="description"
-                  checked={formData.description}
-                  onChange={handleChange}
-                  className="border rounded-lg p-2"
-                />
-              </div>
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  htmlFor="fullDescription"
-                  className={
-                    formData.fullDescription ? "text-black" : "text-gray-500"
-                  }
-                >
-                  Повний опис
-                </label>
-                <input
-                  type="checkbox"
-                  name="fullDescription"
-                  checked={formData.fullDescription}
-                  onChange={handleChange}
-                  className="border rounded-lg"
-                />
-              </div>
-              <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
-                <label
-                  htmlFor="hasImage"
-                  className={formData.hasImage ? "text-black" : "text-gray-500"}
-                >
-                  Є фото
-                </label>
-                <input
-                  type="checkbox"
-                  name="hasImage"
-                  checked={formData.hasImage}
-                  onChange={handleChange}
-                  className="border rounded-lg"
-                />
-              </div>
-              <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1 w-full">
-                <button
-                  // onClick={handleClearFilters}
-                  className="flex-1 border border-pink-500 bg-pink-100 hover:bg-pink-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95 h-8"
-                >
-                  Очистити
-                </button>
-                <button
-                  // onClick={handleApplyFilters}
-                  className="flex-1 border border-blue-500 bg-blue-100 hover:bg-blue-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95  h-8"
-                >
-                  Застосувати
-                </button>
+                  <option
+                    value=""
+                    className={
+                      filterOptions.category ? "text-black" : "text-gray-400"
+                    }
+                  >
+                    Категорія
+                  </option>
+                  {categories.map((category) => (
+                    <option
+                      key={category}
+                      name="category"
+                      value={category}
+                      className="text-black"
+                    >
+                      {category}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex flex-row flex-wrap justify-between">
+                  <input
+                    type="number"
+                    min="0"
+                    max="999999"
+                    name="priceMin"
+                    value={filterOptions.priceMin}
+                    onChange={handleFilterChange}
+                    placeholder="Від (грн)"
+                    className=" flex-1 border border-pink-200 rounded-lg p-2 pl-2 w-full h-8 "
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    max="999999"
+                    name="priceMax"
+                    value={filterOptions.priceMax}
+                    onChange={handleFilterChange}
+                    placeholder="До (грн)"
+                    className=" flex-1 border border-pink-200 rounded-lg p-2 pl-2 w-full h-8 "
+                  />
+                </div>
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    cursor-pointer
+                    htmlFor="isOnSale"
+                    className={
+                      filterOptions.isOnSale ? "text-black" : "text-gray-500"
+                    }
+                  >
+                    Знижка
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="isOnSale"
+                    checked={filterOptions.isOnSale}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    htmlFor="isNew"
+                    className={
+                      filterOptions.isNew ? "text-black" : "text-gray-500"
+                    }
+                  >
+                    Новинка
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="isNew"
+                    checked={filterOptions.isNew}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    cursor-pointer
+                    htmlFor="isInStock"
+                    className={
+                      filterOptions.isInStock ? "text-black" : "text-gray-500"
+                    }
+                  >
+                    В наявності
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="isInStock"
+                    checked={filterOptions.isInStock}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg"
+                  />
+                </div>
+
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    htmlFor="hasDescription"
+                    className={
+                      filterOptions.hasDescription
+                        ? "text-black"
+                        : "text-gray-500"
+                    }
+                  >
+                    Опис
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hasDescription"
+                    checked={filterOptions.hasDescription}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg p-2"
+                  />
+                </div>
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    htmlFor="hasFullDescription"
+                    className={
+                      filterOptions.hasFullDescription
+                        ? "text-black"
+                        : "text-gray-500"
+                    }
+                  >
+                    Повний опис
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hasFullDescription"
+                    checked={filterOptions.hasFullDescription}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
+                  <label
+                    htmlFor="hasImage"
+                    className={
+                      filterOptions.hasImage ? "text-black" : "text-gray-500"
+                    }
+                  >
+                    Є фото
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hasImage"
+                    checked={filterOptions.hasImage}
+                    onChange={handleFilterChange}
+                    className="border rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1 w-full">
+                  <button
+                    onClick={() => clearFilters()}
+                    className="flex-1 border border-pink-500 bg-pink-100 hover:bg-pink-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95 h-8"
+                  >
+                    Очистити
+                  </button>
+                  <button
+                    onClick={() => {
+                      setFilterOptions({
+                        ...filterOptions,
+                        showFilters: false,
+                      });
+                    }}
+                    className="flex-1 border border-blue-500 bg-blue-100 hover:bg-blue-200 text-xs font-medium text-black md:px-2 px-2 py-2 rounded-lg transition-all active:scale-95  h-8"
+                  >
+                    Застосувати
+                  </button>
+                </div>
               </div>
             </div>
           )}
           <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1">
-            {allProducts
-              .slice(-5)
-              .reverse()
-              .map((product) => (
-                <div className="relative p-1 m-1" key={product.id}>
-                  <div className="absolute top-5 right-2 flex flex-col items-center justify-center gap-1 w-22">
-                    <button
-                      className="flex items-center justify-center border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
-                      onClick={() => handleUpdate(product)}
-                    >
-                      Редагувати
-                    </button>
-                    <button
-                      className="flex items-center justify-center border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
-                      onClick={() => deleteProduct(product.id)}
-                    >
-                      Видалити
-                    </button>
-                  </div>
-                  <AdminProductCard product={product} />
+            {displayedProducts.map((product) => (
+              <div
+                className="relative p-1 m-1 flex flex-row justify-between"
+                key={product.id}
+              >
+                <div className="absolute top-5 right-2 flex flex-col items-center justify-center gap-1 w-22">
+                  <button
+                    className="flex items-center justify-center border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
+                    onClick={() => handleUpdate(product)}
+                  >
+                    Редагувати
+                  </button>
+                  <button
+                    className="flex items-center justify-center border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
+                    onClick={() => deleteProduct(product.id)}
+                  >
+                    Видалити
+                  </button>
                 </div>
-              ))}
+                <AdminProductCard product={product} />
+              </div>
+            ))}
           </div>
-          <button
-            onClick={handleShowAll}
-            className="absolute bottom-3 right-5 border border-pink-500 bg-pink-300 hover:bg-pink-200 font-bold text-black px-4 py-2 rounded-lg transition-all active:scale-95 w-30"
-          >
-            Більше →
-          </button>
-          {showAll && (
-            <div className="flex flex-row flex-wrap items-center justify-around gap-1 m-1">
-              {allProducts.map((product) => (
-                <div className="relative p-1 m-1" key={product.id}>
-                  <div className="absolute top-5 right-2 flex flex-col items-center justify-center gap-1 w-22">
-                    <button
-                      className="flex items-center justify-center border border-blue-500 bg-blue-200 hover:bg-blue-300 hover:border-blue-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
-                      onClick={() => handleUpdate(product)}
-                    >
-                      Редагувати
-                    </button>
-                    <button
-                      className="flex items-center justify-center border border-red-500 bg-red-200 hover:bg-red-300 hover:border-red-500 text-black px-2 py-1 rounded-lg transition-all active:scale-95 w-full"
-                      onClick={() => deleteProduct(product.id)}
-                    >
-                      Видалити
-                    </button>
-                  </div>
-                  <AdminProductCard product={product} />
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       )}
     </div>
