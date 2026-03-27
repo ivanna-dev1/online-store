@@ -35,6 +35,7 @@ export default function AdminPage() {
     hasDescription: false,
     hasFullDescription: false,
   });
+  //Move to separate variable
 
   // window.scrollTo({
   //   top: 0,
@@ -148,10 +149,13 @@ export default function AdminPage() {
       (!filterOptions.hasFullDescription || product.fullDescription.length > 0)
     );
   });
+  // const isFiltering = Object.values(filterOptions).some((value) => value !== ""); // Is true if any filter is applied
   const isFiltering =
     filterOptions.searchTerm ||
     filterOptions.group ||
     filterOptions.category ||
+    filterOptions.priceMin ||
+    filterOptions.priceMax ||
     filterOptions.isOnSale ||
     filterOptions.isNew ||
     filterOptions.isInStock ||
@@ -170,14 +174,14 @@ export default function AdminPage() {
       <p className="flex justify-center items-center text-md font-bold text-center text-pink-800 m-3">
         Всього товарів: {allProducts.length}
       </p>
-      <div className="flex flex-col items-center justify-start w-full">
-        <div className="flex justify-between items-center lg:w-1/3 md:w-1/2 w-3/4 mt-2 mb-3 bg-blue-100 rounded-lg">
+      <div className="flex flex-col  items-center justify-start w-full">
+        <div className="flex flex-col sm:flex-row flex-wrap  justify-between items-center lg:w-1/3 md:w-1/2 w-4/5 mt-2 mb-3 bg-blue-100 rounded-lg">
           <button
             onClick={() => setView("add")}
             className={
               view === "add"
-                ? " flex-1 bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
-                : " flex-1 bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
+                ? " sm:flex-1 w-full bg-blue-300 text-blue-800 px-2 py-2 sm:px-4 hover:bg-blue-300 h-full  rounded-lg transition-all sm:whitespace-nowrap"
+                : " sm:flex-1 w-full bg-blue-100 text-blue-800 px-2 py-2 sm:px-4 hover:bg-blue-300 h-full  rounded-lg transition-all sm:whitespace-nowrap"
             }
           >
             Додати товар
@@ -186,8 +190,9 @@ export default function AdminPage() {
             onClick={() => setView("manage")}
             className={
               view === "manage"
-                ? " flex-1 bg-blue-300 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full  rounded-lg transition-all"
-                : " flex-1 bg-blue-100 text-blue-800 px-4 py-2 hover:bg-blue-300 h-full rounded-lg transition-all"
+                ? // TODO: remove whitespace-nowrap
+                  " sm:flex-1 w-full bg-blue-300 text-blue-800 px-2 py-2 sm:px-4 hover:bg-blue-300 h-full  rounded-lg transition-all sm:whitespace-nowrap"
+                : " sm:flex-1 w-full bg-blue-100 text-blue-800 px-2 py-2 sm:px-4 hover:bg-blue-300 h-full rounded-lg transition-all sm:whitespace-nowrap"
             }
           >
             Керувати товарами

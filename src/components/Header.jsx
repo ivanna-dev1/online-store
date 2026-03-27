@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Header = ({ onOpenCatalog }) => {
   const { cart } = useCart();
   return (
-    <header className="flex justify-between bg-gray-300 p-5 text-xl font-bold rounded-lg sticky top-0 z-50">
+    <header className="flex justify-between w-full bg-gray-300 p-5 text-xl font-bold rounded-lg sticky top-0 z-50">
       <div>
         <button
           onClick={onOpenCatalog}
