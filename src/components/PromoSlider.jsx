@@ -36,11 +36,11 @@ export const PromoSlider = ({ title, productList }) => {
           <SwiperSlide key={product.id}>
             <div className="flex sm:flex-row flex-col items-center justify-between sm:gap-5 gap-2 sm:w-full w-fit h-full sm:h-72 max-w-4xl px-5">
               <img
-                className="border flex justify-center items-center border-gray-200 rounded-lg sm:h-full h-1/2 sm:w-1/3 w-full max-w-full object-cover"
+                className=" flex justify-center items-center  rounded-lg sm:h-full h-1/2 sm:w-1/3 w-full max-w-full object-cover"
                 src={product.image ? product.image : "./img/mainimg.png"}
                 alt={product.name}
               />
-              <div className=" border border-gray-200 rounded-lg flex flex-col justify-around items-center gap-2 sm:w-1/3 w-full sm:h-full h-1/2 max-h-60">
+              <div className="  rounded-lg flex flex-col justify-around items-center gap-2 sm:w-1/3 w-full sm:h-full h-1/2 max-h-60">
                 <div className="flex flex-col justify-center gap-1">
                   <h3 className="text-lg font-semibold">{product.name}</h3>
                   <div className="flex flex-row justify-start items-center gap-1 w-full">
@@ -76,7 +76,7 @@ export const PromoSlider = ({ title, productList }) => {
                   Купити зараз
                 </button>
               </div>
-              <p className=" hidden sm:flex border border-gray-200 rounded-lg sm:flex-row justify-around items-center text-gray-600 max-h-60 sm:w-1/3 w-full sm:h-full h-1/3">
+              <p className=" hidden sm:flex rounded-lg sm:flex-row justify-around items-center text-gray-600 max-h-60 sm:w-1/3 w-full sm:h-full h-1/3">
                 {product.fullDescription}
               </p>
             </div>

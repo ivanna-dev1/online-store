@@ -8,7 +8,7 @@ function ProductCard({ product, isInCart }) {
     <div className="flex flex-col justify-between bg-white border border-gray-200 rounded-2xl p-2 m-2  h-100 min-w-45 max-w-50 shadow-md relative">
       <Link
         to={`/product/${product.id}`}
-        className="flex flex-col  justify-start items-start h-fit w-full"
+        className="flex flex-col  justify-around items-center h-fit w-full"
       >
         {product.onSale && (
           <span className="absolute top-2 left-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
@@ -20,14 +20,14 @@ function ProductCard({ product, isInCart }) {
             New!
           </span>
         )}
-        <div className="flex items-center justify-center border border-gray-200 rounded-lg h-1/2 w-fit mx-auto">
+        <div className="flex items-center justify-center  rounded-lg h-1/2 w-fit mx-auto">
           <img
-            className="flex flex-row items-center justify-center object-cover text-gray-500  border border-gray-200 rounded-lg h-full w-fit"
+            className="flex flex-row items-center justify-center object-cover text-gray-500   rounded-lg h-full w-fit"
             src={product.image ? product.image : "./img/mainimg.png"}
             alt={product.name}
           />
         </div>
-        <div className="flex flex-col items-start w-fit max-h-1/2  gap-1 border border-gray-200 rounded-lg">
+        <div className="flex flex-col items-start w-fit max-h-1/2  gap-1  rounded-lg">
           <h3 className="text-lg font-semibold w-full">{product.name}</h3>
           <p className="text-gray-600 w-full">
             {product.onSale ? (
