@@ -1,0 +1,88 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import products from "../products";
+import { useCart } from "../context/CartContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+export const PromoSlider = ({ title, productList }) => {
+  if (!productList || productList.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <p className="text-gray-400">Тут поки порожньо...</p>
+      </div>
+    );
+  }
+  const { addToCart } = useCart();
+
+  return (
+    <section
+      id="promo-slider"
+      className=" bg-white p-4 flex flex-col  justify-between gap-4 border-b border-white rounded-2xl"
+    >
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        className=" lg:w-230 max-w-221 sm:h-66 h-fit px-3 pt-2"
+      >
+        {productList.map((product) => (
+          <SwiperSlide key={product.id}>
+            <div className="flex sm:flex-row flex-col items-center justify-between sm:gap-5 gap-2 sm:w-full w-fit h-full sm:h-72 max-w-4xl px-5">
+              <img
+                className="border flex justify-center items-center border-gray-200 rounded-lg sm:h-full h-1/2 sm:w-1/3 w-full max-w-full object-cover"
+                src={product.image ? product.image : "./img/mainimg.png"}
+                alt={product.name}
+              />
+              <div className=" border border-gray-200 rounded-lg flex flex-col justify-around items-center gap-2 sm:w-1/3 w-full sm:h-full h-1/2 max-h-60">
+                <div className="flex flex-col justify-center gap-1">
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <div className="flex flex-row justify-start items-center gap-1 w-full">
+                    {product.onSale ? (
+                      <div className="flex flex-row justify-start items-start gap-2">
+                        <span className="text-2xl font-extrabold text-pink-600">
+                          {Math.round(
+                            product.price * (1 - product.discount / 100),
+                          )}
+                          грн
+                        </span>
+                        <span className="text-gray-400 line-through text-lg">
+                          {product.price} грн
+                        </span>
+                        <span className="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-1 rounded-full border border-pink-200">
+                          -{product.discount}%
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex flex-row justify-start gap-3 ">
+                        <span className="text-xl font-bold text-pink-700">
+                          {product.price} грн
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-gray-600">{product.description}</p>
+                </div>
+                <button
+                  onClick={() => addToCart(product.id)}
+                  className="mt-4 bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-pink-700 transition-all shadow-lg active:scale-95 w-fit"
+                >
+                  Купити зараз
+                </button>
+              </div>
+              <p className=" hidden sm:flex border border-gray-200 rounded-lg sm:flex-row justify-around items-center text-gray-600 max-h-60 sm:w-1/3 w-full sm:h-full h-1/3">
+                {product.fullDescription}
+              </p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+};
