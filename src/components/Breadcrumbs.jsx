@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Нам потрібні посила
 export const Breadcrumbs = ({ group, category, productName }) => {
   return (
     <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 font-medium">
-      {/* 1. Завжди показуємо посилання на Головну (або Магазин) */}
+      {/* посилання на Головну (або Магазин) */}
       <Link to="/" className="hover:text-pink-600 transition-colors">
         Магазин
       </Link>
