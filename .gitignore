@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+dist 
 dist-ssr
 *.local
 
@@ -26,4 +26,6 @@ dist-ssr
 # Agent and documentation files
 file.md
 project_plan.md
-/.agent/
+/.agent/ 
+/project_roadmap.md 
+/projectsText/
