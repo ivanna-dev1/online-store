@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsContext";
+import { catalogLink } from "../utils";
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { allProducts } = useContext(ProductsContext);
@@ -22,8 +24,6 @@ export const Sidebar = ({ isOpen, onClose }) => {
       <aside
         className={`fixed top-0 left-0 h-screen bg-white shadow-2xl z-50 w-80 transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        {/* Кнопка Каталогу функція-перемикач */}
-
         <div className="flex justify-between items-center p-6 border-b border-pink-100 bg-pink-50">
           <h2 className="text-2xl font-bold text-pink-900">Каталог</h2>
           <button
@@ -33,10 +33,16 @@ export const Sidebar = ({ isOpen, onClose }) => {
             ×
           </button>
         </div>
-        <div>
-          <ul className="mt-4 flex flex-col gap-3 ">
+        <div className="overflow-y-auto h-[calc(100vh-88px)] pb-6">
+          <Link
+            to="/catalog"
+            onClick={onClose}
+            className="block mt-4 mx-4 py-2 px-4 rounded-lg font-bold text-pink-800 hover:bg-pink-100"
+          >
+            Увесь каталог
+          </Link>
+          <ul className="mt-2 flex flex-col gap-3 ">
             {groups.map((group) => {
-              // Знайди всі підкатегорії для цієї групи
               const categories = [
                 ...new Set(
                   allProducts
@@ -48,22 +54,35 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 <li key={group} className="flex flex-col ml-2">
                   <button
                     onClick={() => handleGroupToggle(group)}
-                    className={`text-left font-bold py-2 px-4 rounded-lg flex justify-between items-center ${expandedGroup === group
+                    className={`text-left font-bold py-2 px-4 rounded-lg flex justify-between items-center ${
+                      expandedGroup === group
                         ? "bg-pink-100 text-pink-800"
                         : "text-gray-700 hover:bg-gray-100"
-                      }`}
+                    }`}
                   >
                     <span>{group}</span>
                     <span>{expandedGroup === group ? "−" : "+"}</span>
                   </button>
                   {expandedGroup === group && (
                     <ul className="mt-1 ml-6 flex flex-col gap-1 border-l-2 border-pink-200 pl-4">
-                      {categories.map((sub) => (
-                        <li
-                          key={sub}
-                          className="py-1 px-3 text-sm text-gray-500 hover:text-pink-600 cursor-pointer"
+                      <li>
+                        <Link
+                          to={catalogLink(group)}
+                          onClick={onClose}
+                          className="block py-1 px-3 text-sm font-medium text-pink-700 hover:text-pink-600"
                         >
-                          {sub}
+                          Усі товари групи
+                        </Link>
+                      </li>
+                      {categories.map((sub) => (
+                        <li key={sub}>
+                          <Link
+                            to={catalogLink(group, sub)}
+                            onClick={onClose}
+                            className="block py-1 px-3 text-sm text-gray-500 hover:text-pink-600"
+                          >
+                            {sub}
+                          </Link>
                         </li>
                       ))}
                     </ul>

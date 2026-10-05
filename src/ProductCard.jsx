@@ -1,78 +1,71 @@
 import React from "react";
 import { useCart } from "./context/CartContext";
 import { Link } from "react-router-dom";
+import { ProductImage } from "./components/ProductImage";
+import { Price } from "./components/Price";
+import { OutOfStockOverlay } from "./components/OutOfStockOverlay";
 
 function ProductCard({ product, isInCart }) {
   const { cart, addToCart, incrementQuantity, decrementQuantity } = useCart();
+  const outOfStock = product.inStock === false;
   return (
-    <div className="flex flex-col justify-between bg-white border border-gray-200 rounded-2xl p-2 m-2  h-100 min-w-45 max-w-50 shadow-md relative">
+    <div className="flex flex-col gap-2 bg-white border border-gray-200 rounded-2xl p-3 w-52 h-104 shadow-md relative">
+      {product.onSale && (
+        <span className="absolute top-4 left-4 bg-white/90 text-xs font-bold text-pink-600 px-2 py-0.5 rounded-lg z-10">
+          Sale!
+        </span>
+      )}
+      {product.isNew && (
+        <span className="absolute top-4 right-4 bg-white/90 text-xs font-bold text-pink-600 px-2 py-0.5 rounded-lg z-10">
+          New!
+        </span>
+      )}
       <Link
         to={`/product/${product.id}`}
-        className="flex flex-col  justify-around items-center h-fit w-full"
+        className="flex flex-col flex-1 min-h-0 gap-2"
       >
-        {product.onSale && (
-          <span className="absolute top-2 left-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
-            Sale!
-          </span>
-        )}
-        {product.isNew && (
-          <span className="absolute top-2 right-2 font-bold text-pink-600 px-2 py-1 rounded-lg z-10">
-            New!
-          </span>
-        )}
-        <div className="flex items-center justify-center  rounded-lg h-1/2 w-fit mx-auto">
-          <img
-            className="flex flex-row items-center justify-center object-cover text-gray-500   rounded-lg h-full w-fit"
-            src={product.image ? product.image : "./img/mainimg.png"}
+        <div className="relative h-32 w-full shrink-0 flex items-center justify-center overflow-hidden rounded-lg bg-white">
+          <ProductImage
+            className="max-h-full max-w-full object-contain"
+            src={product.image}
             alt={product.name}
           />
+          {outOfStock && <OutOfStockOverlay />}
         </div>
-        <div className="flex flex-col items-start w-fit max-h-1/2  gap-1  rounded-lg">
-          <h3 className="text-lg font-semibold w-full">{product.name}</h3>
-          <p className="text-gray-600 w-full">
-            {product.onSale ? (
-              <div className="flex flex-row justify-start gap-1 ">
-                <span className="text-lg text-black">
-                  {product.price}грн + {product.discount}%
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-row justify-start gap-1 ">
-                <span className="text-lg text-black">{product.price}грн</span>
-              </div>
-            )}
-          </p>
-          <p className="text-sm text-gray-600 w-full">
-            {product.description.length > 70
-              ? product.description.slice(0, 70) + "..."
-              : product.description}
-          </p>
-        </div>
+        <h3 className="text-base font-semibold leading-5 h-10 line-clamp-2">
+          {product.name}
+        </h3>
+        <Price product={product} />
+        <p className="text-sm text-gray-600 leading-4 line-clamp-3 flex-1 min-h-0">
+          {product.description}
+        </p>
       </Link>
-      <div className="flex flex-col justify-center items-center gap-1 h-1/4 w-full p-2 mb-2">
+      <div className="flex flex-col gap-2 shrink-0">
         <button
           onClick={() => addToCart(product.id)}
-          disabled={isInCart}
-          className={
-            isInCart
-              ? "cursor-not-allowed bg-gray-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95  w-full"
-              : "cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95 w-full"
-          }
+          disabled={isInCart || outOfStock}
+          className={`h-10 w-full rounded-lg text-white shadow transition-all active:scale-95 ${
+            isInCart || outOfStock
+              ? "cursor-not-allowed bg-gray-500"
+              : "cursor-pointer bg-blue-500"
+          }`}
         >
-          {isInCart ? "В кошику" : "Додати"}
+          {outOfStock ? "Немає в наявності" : isInCart ? "В кошику" : "Додати"}
         </button>
-        <div className="flex justify-around gap-2 w-full">
+        <div className="grid grid-cols-3 gap-2 w-full">
           <button
-            className=" flex items-center bg-pink-100 border border-pink-500 hover:bg-pink-300 hover:border-pink-500 text-black px-4 py-2 rounded-lg w-1/3"
+            className="h-10 bg-pink-100 border border-pink-500 hover:bg-pink-300 text-black rounded-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-pink-100"
+            disabled={outOfStock}
             onClick={() => incrementQuantity(product.id)}
           >
             +
           </button>
-          <p className="flex items-center text-gray-600 rounded-lg border border-gray-200 text-center px-4 py-2 w-1/3">
+          <p className="h-10 flex items-center justify-center text-gray-600 rounded-lg border border-gray-200">
             {cart.find((item) => item.id === product.id)?.quantity || 0}
           </p>
           <button
-            className="flex items-center bg-pink-100 border border-pink-500 hover:bg-pink-300 hover:border-pink-500 text-black px-4 py-2 rounded-lg w-1/3    "
+            className="h-10 bg-pink-100 border border-pink-500 hover:bg-pink-300 text-black rounded-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-pink-100"
+            disabled={outOfStock}
             onClick={() => decrementQuantity(product.id)}
           >
             -

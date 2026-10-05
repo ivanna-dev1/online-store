@@ -1,13 +1,11 @@
 import React from "react";
-import { ProductsContext } from "../context/ProductsContext";
-import { useContext } from "react";
+import { ProductImage } from "./ProductImage";
 
 export const AdminProductCard = ({ product }) => {
-  const { deleteProduct } = useContext(ProductsContext);
   return (
     <div className="flex flex-col justify-start text-xs gap-1 shadow-2xl bg-white p-3 rounded-2xl w-45 h-65 m-3">
-      <img
-        src={product.image ? product.image : "./img/mainimg.png"}
+      <ProductImage
+        src={product.image}
         alt={product.name}
         className="w-fit h-1/4 object-cover"
       />

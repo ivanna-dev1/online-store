@@ -5,8 +5,16 @@ import { useContext } from "react";
 
 export default function HomePage() {
   const { allProducts } = useContext(ProductsContext);
-  const saleProducts = allProducts.filter((product) => product.onSale === true);
-  const newProducts = allProducts.filter((product) => product.isNew === true);
+  // У слайдери потрапляють тільки товари, які є в наявності
+  const availableProducts = allProducts.filter(
+    (product) => product.inStock !== false,
+  );
+  const saleProducts = availableProducts.filter(
+    (product) => product.onSale === true,
+  );
+  const newProducts = availableProducts.filter(
+    (product) => product.isNew === true,
+  );
 
   // window.scrollTo({
   //   top: 0,
@@ -16,7 +24,7 @@ export default function HomePage() {
   return (
     <div className="flex">
       {/* СЕКЦІЯ 1: Привітання та Слайдери */}
-      <div className="flex flex-col items-center sm:p-10 sm:m-5 mx-auto p-4 m-2 bg-white rounded-3xl shadow-sm border w-full border-pink-100">
+      <div className="flex flex-col items-center sm:p-10 sm:m-5 mx-auto p-2 m-1 bg-white rounded-3xl shadow-sm border flex-1 min-w-0 border-pink-100">
         <h1 className="sm:text-4xl text-2xl font-extrabold text-pink-900 mb-6 text-center">
           Вітаємо у FreshStore! 🍎🥦
         </h1>
@@ -24,7 +32,7 @@ export default function HomePage() {
           Ми пропонуємо тільки найсвіжіші овочі, фрукти та фермерські продукти з
           доставкою до ваших дверей. Гортайте нижче, щоб побачити наші акції!
         </p>
-        <div className="max-w-230 w-full sm:h-75 h-auto rounded-2xl flex items-center justify-center border border-pink-200 shadow-inner group transition-all md:text-red-500 sm:text-blue-500">
+        <div className="max-w-230 w-full sm:h-75 h-auto rounded-2xl flex items-center justify-center border border-pink-200 shadow-inner group transition-all">
           <PromoSlider title="Гарячі пропозиції" productList={saleProducts} />
           {/* <span className="text-pink-300 font-bold italic text-l transition-transform">
             🎠 Слайдер з акціями з'явиться тут...

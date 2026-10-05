@@ -1,19 +1,60 @@
-# React + Vite
+# 🍎 FreshStore — інтернет-магазин продуктів
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Навчальний фронтенд-проєкт інтернет-магазину свіжих продуктів: каталог із пошуком і фільтрами, кошик із підрахунком знижок та проста адмін-панель.
 
-Currently, two official plugins are available:
+## Можливості
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Каталог** із групами та підкатегоріями; фільтри зберігаються в URL, тому посиланням на відфільтрований каталог можна ділитися
+- **Пошук** за назвою (кнопка «Шукати», Enter, очищення запиту)
+- **Бічне меню** та **хлібні крихти** для навігації по категоріях
+- **Слайдери** «Гарячі пропозиції» та «NEW!» на головній сторінці (Swiper)
+- **Сторінка товару** з повним описом
+- **Кошик**: зміна кількості, ціни зі знижками та загальний чек (сума без знижок, знижка, до сплати); зберігається в `localStorage`
+- **Кабінет / адмін-панель**: додавання, редагування й видалення товарів
+- Заглушка, якщо в товару немає фото або посилання на фото не працює
+- Адаптивна верстка: кількість карток у рядку підлаштовується під ширину екрана, у шапці на вузьких екранах лишаються іконки
 
-## React Compiler
+## Технології
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/) + [Vite](https://vite.dev/)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Swiper](https://swiperjs.com/)
+- ESLint
 
-## Expanding the ESLint configuration
+## Запуск
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Потрібен [Node.js](https://nodejs.org/) 18 або новіший.
 
+```bash
+git clone https://github.com/ivanna-dev1/online-store.git
+cd online-store
+npm install
+npm run dev
+```
 
-<!-- hello Ivanna -->
+Після цього відкрийте адресу, яку покаже Vite (зазвичай `http://localhost:5173`).
+
+| Команда           | Що робить                         |
+| ----------------- | --------------------------------- |
+| `npm run dev`     | Запускає сервер розробки          |
+| `npm run build`   | Збирає проєкт у папку `dist`      |
+| `npm start`       | Показує зібрану версію (`vite preview`) |
+| `npm run lint`    | Перевіряє код ESLint              |
+
+## Структура
+
+```
+src/
+├── components/   # Header, Sidebar, Breadcrumbs, PromoSlider, Price, ProductImage
+├── context/      # ProductsContext (товари), CartContext (кошик)
+├── pages/        # Home, Catalog, ProductDetails, Cart, Admin, Login
+├── ProductCard.jsx
+├── products.js   # початкові дані товарів
+└── utils.js      # ціна зі знижкою, посилання на каталог
+public/img/       # заглушка для товарів без фото
+```
+
+## Нотатки
+
+Дані (товари та кошик) зберігаються в `localStorage` браузера, бекенду немає. Сторінка входу поки що демонстраційна.

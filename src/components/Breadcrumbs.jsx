@@ -1,46 +1,51 @@
-import { Link } from "react-router-dom"; // Нам потрібні посилання для переходів
+import { Link } from "react-router-dom";
+import { catalogLink } from "../utils";
+
+const linkClass = "hover:text-pink-600 transition-colors";
+const currentClass = "text-pink-700 font-bold";
 
 export const Breadcrumbs = ({ group, category, productName }) => {
   return (
-    <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 font-medium">
-      {/* посилання на Головну (або Магазин) */}
-      <Link to="/" className="hover:text-pink-600 transition-colors">
-        Магазин
+    <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-6 font-medium">
+      <Link to="/" className={linkClass}>
+        Головна
       </Link>
 
-      {/* 2. Якщо нам передали групу — малюємо її */}
+      <span className="text-gray-400">/</span>
+      {group || category || productName ? (
+        <Link to="/catalog" className={linkClass}>
+          Каталог
+        </Link>
+      ) : (
+        <span className={currentClass}>Каталог</span>
+      )}
+
       {group && (
         <>
           <span className="text-gray-400">/</span>
-          <span
-            className={
-              !category
-                ? "text-pink-700 font-bold"
-                : "hover:text-pink-600 cursor-pointer"
-            }
-          >
-            {group}
-          </span>
+          {category || productName ? (
+            <Link to={catalogLink(group)} className={linkClass}>
+              {group}
+            </Link>
+          ) : (
+            <span className={currentClass}>{group}</span>
+          )}
         </>
       )}
 
-      {/* 3. Якщо передали підкатегорію — малюємо її */}
       {category && (
         <>
           <span className="text-gray-400">/</span>
-          <span
-            className={
-              !productName
-                ? "text-pink-700 font-bold"
-                : "hover:text-pink-600 cursor-pointer"
-            }
-          >
-            {category}
-          </span>
+          {productName ? (
+            <Link to={catalogLink(group, category)} className={linkClass}>
+              {category}
+            </Link>
+          ) : (
+            <span className={currentClass}>{category}</span>
+          )}
         </>
       )}
 
-      {/* 4. Якщо ми всередині товару — малюємо його назву (це кінець шляху, тому без посилання) */}
       {productName && (
         <>
           <span className="text-gray-400">/</span>

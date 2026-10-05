@@ -13,7 +13,12 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const isAvailable = (productId) =>
+    allProducts.find((item) => item.id === Number(productId))?.inStock !==
+    false;
+
   const addToCart = (productId) => {
+    if (!isAvailable(productId)) return;
     const existInCart = cart.find((item) => item.id === productId);
     if (existInCart) {
       console.log("Product added to cart");
@@ -65,6 +70,8 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((item) => item.id !== productId));
   };
 
+  const clearCart = () => setCart([]);
+
   return (
     <CartContext.Provider
       value={{
@@ -73,6 +80,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         incrementQuantity,
         decrementQuantity,
+        clearCart,
       }}
     >
       {children}

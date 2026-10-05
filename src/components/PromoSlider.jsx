@@ -1,6 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import products from "../products";
+import { ProductImage } from "./ProductImage";
+import { Price } from "./Price";
 import { useCart } from "../context/CartContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -9,6 +8,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export const PromoSlider = ({ title, productList }) => {
+  const { addToCart } = useCart();
+
   if (!productList || productList.length === 0) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -16,13 +17,13 @@ export const PromoSlider = ({ title, productList }) => {
       </div>
     );
   }
-  const { addToCart } = useCart();
 
   return (
     <section
       id="promo-slider"
-      className=" bg-white p-4 flex flex-col  justify-between gap-4 border-b border-white rounded-2xl"
+      className="bg-white p-4 flex flex-col gap-4 rounded-2xl w-full min-w-0 overflow-hidden"
     >
+      <h2 className="text-xl font-bold text-gray-900 text-center">{title}</h2>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
@@ -30,53 +31,32 @@ export const PromoSlider = ({ title, productList }) => {
         navigation={true}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        className=" lg:w-230 max-w-221 sm:h-66 h-fit px-3 pt-2"
+        className="w-full max-w-221 h-fit pt-2"
       >
         {productList.map((product) => (
           <SwiperSlide key={product.id}>
-            <div className="flex sm:flex-row flex-col items-center justify-between sm:gap-5 gap-2 sm:w-full w-fit h-full sm:h-72 max-w-4xl px-5">
-              <img
-                className=" flex justify-center items-center  rounded-lg sm:h-full h-1/2 sm:w-1/3 w-full max-w-full object-cover"
-                src={product.image ? product.image : "./img/mainimg.png"}
-                alt={product.name}
-              />
-              <div className="  rounded-lg flex flex-col justify-around items-center gap-2 sm:w-1/3 w-full sm:h-full h-1/2 max-h-60">
-                <div className="flex flex-col justify-center gap-1">
-                  <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <div className="flex flex-row justify-start items-center gap-1 w-full">
-                    {product.onSale ? (
-                      <div className="flex flex-row justify-start items-start gap-2">
-                        <span className="text-2xl font-extrabold text-pink-600">
-                          {Math.round(
-                            product.price * (1 - product.discount / 100),
-                          )}
-                          грн
-                        </span>
-                        <span className="text-gray-400 line-through text-lg">
-                          {product.price} грн
-                        </span>
-                        <span className="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-1 rounded-full border border-pink-200">
-                          -{product.discount}%
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="flex flex-row justify-start gap-3 ">
-                        <span className="text-xl font-bold text-pink-700">
-                          {product.price} грн
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <p className="text-gray-600">{product.description}</p>
-                </div>
+            <div className="grid sm:grid-cols-3 grid-cols-1 items-center gap-4 px-10 pb-8 sm:h-64">
+              <div className="h-48 sm:h-full w-full flex items-center justify-center overflow-hidden rounded-lg bg-white">
+                <ProductImage
+                  className="max-h-full max-w-full object-contain"
+                  src={product.image}
+                  alt={product.name}
+                />
+              </div>
+              <div className="flex flex-col justify-center items-start gap-3">
+                <h3 className="text-lg font-semibold">{product.name}</h3>
+                <Price product={product} size="lg" />
+                <p className="text-gray-600 line-clamp-2">
+                  {product.description}
+                </p>
                 <button
                   onClick={() => addToCart(product.id)}
-                  className="mt-4 bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-pink-700 transition-all shadow-lg active:scale-95 w-fit"
+                  className="bg-pink-600 text-white px-6 py-2 rounded-2xl font-bold hover:bg-pink-700 transition-all shadow-lg active:scale-95"
                 >
                   Купити зараз
                 </button>
               </div>
-              <p className=" hidden sm:flex rounded-lg sm:flex-row justify-around items-center text-gray-600 max-h-60 sm:w-1/3 w-full sm:h-full h-1/3">
+              <p className="hidden sm:block text-gray-600 text-sm whitespace-pre-line line-clamp-8">
                 {product.fullDescription}
               </p>
             </div>
