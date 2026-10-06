@@ -2,23 +2,25 @@ import { useContext, useState } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import { AdminProductCard } from "../components/AdminProductCard";
 
+const emptyProduct = {
+  name: "",
+  group: "",
+  category: "",
+  price: "",
+  onSale: false,
+  discount: "",
+  isNew: false,
+  inStock: true,
+  image: "",
+  description: "",
+  fullDescription: "",
+};
+
 export default function AdminPage() {
   const { allProducts, addProduct, deleteProduct, updateProduct } =
     useContext(ProductsContext);
-  const [formData, setFormData] = useState({
-    name: "",
-    group: "",
-    category: "",
-    price: "",
-    onSale: false,
-    discount: null,
-    isNew: false,
-    inStock: true,
-    image: "",
-    description: "",
-    fullDescription: "",
-  });
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [formData, setFormData] = useState(emptyProduct);
+  const [successMessage, setSuccessMessage] = useState("");
   const [view, setView] = useState("add");
   const [showAll, setShowAll] = useState(false);
   const [filterOptions, setFilterOptions] = useState({
@@ -48,7 +50,7 @@ export default function AdminPage() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  const id = allProducts.length + 1;
+  const id = Math.max(0, ...allProducts.map((product) => product.id)) + 1;
   const groups = [...new Set(allProducts.map((product) => product.group))];
   const categories = [
     ...new Set(
@@ -57,33 +59,40 @@ export default function AdminPage() {
         .map((product) => product.category),
     ),
   ];
+  const filterCategories = [
+    ...new Set(
+      allProducts
+        .filter(
+          (product) =>
+            !filterOptions.group || product.group === filterOptions.group,
+        )
+        .map((product) => product.category),
+    ),
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    formData.id && updateProduct(formData);
-    !formData.id &&
-      addProduct({ ...formData, price: Number(formData.price), id });
-    setFormData({
-      name: "",
-      group: "",
-      category: "",
-      price: "",
-      onSale: false,
-      discount: null,
-      isNew: true,
-      inStock: true,
-      image: "",
-      description: "",
-      fullDescription: "",
-    });
-    setShowSuccess(true);
+    const isEditing = Boolean(formData.id);
+    const product = {
+      ...formData,
+      price: Number(formData.price),
+      discount: formData.onSale ? Number(formData.discount) || 0 : 0,
+    };
+    if (isEditing) {
+      updateProduct(product);
+    } else {
+      addProduct({ ...product, id });
+    }
+    setFormData(emptyProduct);
+    setSuccessMessage(
+      isEditing ? "Зміни успішно збережено!" : "Товар успішно додано в каталог!",
+    );
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-    setTimeout(() => setShowSuccess(false), 3000);
+    setTimeout(() => setSuccessMessage(""), 3000);
   };
-  console.log("formData", formData);
 
   // редагування продукту
   const handleUpdate = (product) => {
@@ -198,9 +207,9 @@ export default function AdminPage() {
             Керувати товарами
           </button>
         </div>
-        {showSuccess && (
+        {successMessage && (
           <div className="flex justify-center items-center text-2xl font-bold text-center text-blue-400 mb-2">
-            Товар успішно додано в каталог!
+            {successMessage}
           </div>
         )}
         {view === "add" && (
@@ -209,7 +218,7 @@ export default function AdminPage() {
             className="flex flex-col gap-1 items-center justify-center lg:w-1/3 md:w-1/2 w-3/4 shadow-2xl bg-white p-5 rounded-2xl"
           >
             <p className="text-2xl font-bold text-center text-gray-500 mb-5">
-              Додавання нового товару
+              {formData.id ? "Редагування товару" : "Додавання нового товару"}
             </p>
             {/* <p className="text-gray-500 border border-pink-200 rounded-lg p-2 pl-5 w-full">
               id {formData.id ? formData.id : id}
@@ -296,8 +305,7 @@ export default function AdminPage() {
               />
             </div>
             <input
-              {...(formData.onSale && "required")}
-              {...(formData.onSale ? "" : "disabled")}
+              required={formData.onSale}
               maxLength="2"
               min="0"
               max="99"
@@ -374,11 +382,10 @@ export default function AdminPage() {
               />
             </div>
             <button
-              onClick={handleSubmit}
               type="submit"
               className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg transition-all active:scale-95"
             >
-              Додати товар
+              {formData.id ? "Зберегти зміни" : "Додати товар"}
             </button>
           </form>
         )}
@@ -482,7 +489,7 @@ export default function AdminPage() {
                   >
                     Категорія
                   </option>
-                  {categories.map((category) => (
+                  {filterCategories.map((category) => (
                     <option
                       key={category}
                       name="category"
@@ -609,17 +616,17 @@ export default function AdminPage() {
                 </div>
                 <div className="flex items-center flex-row justify-between border border-pink-200 rounded-lg p-2 pl-2 w-full h-8">
                   <label
-                    htmlFor="hasImage"
+                    htmlFor="hasPhoto"
                     className={
-                      filterOptions.hasImage ? "text-black" : "text-gray-500"
+                      filterOptions.hasPhoto ? "text-black" : "text-gray-500"
                     }
                   >
                     Є фото
                   </label>
                   <input
                     type="checkbox"
-                    name="hasImage"
-                    checked={filterOptions.hasImage}
+                    name="hasPhoto"
+                    checked={filterOptions.hasPhoto}
                     onChange={handleFilterChange}
                     className="border rounded-lg"
                   />

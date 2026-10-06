@@ -4,8 +4,14 @@ import products from "../products";
 export const ProductsContext = createContext();
 export default function ProductsProvider({ children }) {
   const [allProducts, setAllProducts] = useState(() => {
-    const saveProducts = localStorage.getItem("online_store_all_products");
-    return saveProducts ? JSON.parse(saveProducts) : products;
+    try {
+      const saveProducts = JSON.parse(
+        localStorage.getItem("online_store_all_products"),
+      );
+      return Array.isArray(saveProducts) ? saveProducts : products;
+    } catch {
+      return products;
+    }
   });
 
   useEffect(() => {

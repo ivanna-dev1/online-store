@@ -6,8 +6,12 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const { allProducts } = useContext(ProductsContext);
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
+    try {
+      const savedCart = JSON.parse(localStorage.getItem("cart"));
+      return Array.isArray(savedCart) ? savedCart : [];
+    } catch {
+      return [];
+    }
   });
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -36,6 +40,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const incrementQuantity = (productId) => {
+    if (!isAvailable(productId)) return;
     const existInCart = cart.find((item) => item.id === productId);
     if (existInCart) {
       setCart(
@@ -81,6 +86,7 @@ export const CartProvider = ({ children }) => {
         incrementQuantity,
         decrementQuantity,
         clearCart,
+        isAvailable,
       }}
     >
       {children}

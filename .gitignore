@@ -23,14 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Agent and documentation files (not for the repo)
-file.md
-project_plan.md
-project_roadmap.md
-conception.md
+# Службові файли
 /projectsText/
-/.agent/
-/.agents/
-/.claude/
-/CLAUDE.md
-/AGENTS.md
+.agents/

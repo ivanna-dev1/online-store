@@ -64,8 +64,14 @@ const Totals = ({ subtotal, total, deliveryCost }) => (
 );
 
 export default function CartPage() {
-  const { cart, removeFromCart, incrementQuantity, decrementQuantity, clearCart } =
-    useCart();
+  const {
+    cart,
+    removeFromCart,
+    incrementQuantity,
+    decrementQuantity,
+    clearCart,
+    isAvailable,
+  } = useCart();
   const [step, setStep] = useState("cart");
   const [form, setForm] = useState(emptyForm);
   const [order, setOrder] = useState(null);
@@ -407,7 +413,9 @@ export default function CartPage() {
               </button>
               <p className="w-8 text-center text-gray-600">{item.quantity}</p>
               <button
-                className="bg-pink-100 border border-pink-500 hover:bg-pink-300 px-3 py-1 rounded-lg"
+                className="bg-pink-100 border border-pink-500 hover:bg-pink-300 px-3 py-1 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-pink-100"
+                disabled={!isAvailable(item.id)}
+                title={isAvailable(item.id) ? undefined : "Немає в наявності"}
                 onClick={() => incrementQuantity(item.id)}
               >
                 +
